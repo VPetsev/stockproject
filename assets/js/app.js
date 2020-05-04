@@ -1,19 +1,21 @@
 
 const firebaseConfig = {
-        apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
-        authDomain: "stock-a30ff.firebaseapp.com",
-        databaseURL: "https://stock-a30ff.firebaseio.com",
-        projectId: "stock-a30ff",
-        storageBucket: "stock-a30ff.appspot.com",
-        messagingSenderId: "628920247502",
-        appId: "1:628920247502:web:93439270d44745fc435c9f"
+    apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
+    authDomain: "stock-a30ff.firebaseapp.com",
+    databaseURL: "https://stock-a30ff.firebaseio.com",
+    projectId: "stock-a30ff",
+    storageBucket: "stock-a30ff.appspot.com",
+    messagingSenderId: "628920247502",
+    appId: "1:628920247502:web:93439270d44745fc435c9f"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 // Get elements
-const txtEmail = document.getElementById("textEmail");
+const txtEmail = document.getElementById("txtEmail");
 const txtPassword = document.getElementById("txtPassword");
+const txtName = document.getElementById("txtName")
+const txtPhone = document.getElementByIs("txtPhone")
 const btnLogin = document.getElementById("btnLogin");
 const btnSignup = document.getElementById("btnSignup");
 const btnLogout = document.getElementById("btnLogout");
@@ -29,16 +31,17 @@ rootRef.on('value', (snapshot) => {
 })
 
 
-btnLogin.addEventListener('click', e => {
-    const email = txtEmail.value
-    const pass = txtPassword.value
-    logIn(email, pass)
-})
+// btnLogin.addEventListener('click', e => {
+//     const email = txtEmail.value
+//     const pass = txtPassword.value
+//     logIn(email, pass)
+// })
 
 btnSignUp.addEventListener('click', e => {
     const email = txtEmail.value
     const pass = txtPassword.value
-    signUp(email, pass)
+    const name = txtName.value
+    signUp(email, pass, name)
 })
 
 googleSignInButton.addEventListener('click', e => {
@@ -57,7 +60,7 @@ btnLogout.addEventListener('click', e => {
 
 // Add a realtime listener
 firebase.auth().onAuthStateChanged(fiebaseUser => {
-    if(firebaseUser) {
+    if (firebaseUser) {
         console.log(firebaseUser);
         btnLogout.classList.remove("hide");
     } else {
@@ -84,13 +87,13 @@ function logIn(email, password) {
 }
 
 function signUp(email, password) {
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    firebase.auth().createUserWithEmailAndPassword(email, password, name)
         .then(function (user) {
             let emailKey = email.substr(0, email.indexOf("@"))
             firebase.database().ref("users/" + emailKey).set({
                 email: email,
                 password: password,
-                name: 'anon'
+                name: name
             })
             alert("User Account Created")
         })
