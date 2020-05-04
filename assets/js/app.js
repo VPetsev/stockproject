@@ -1,5 +1,5 @@
 
-const firebaseConfig = {
+const config = {
         apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
         authDomain: "stock-a30ff.firebaseapp.com",
         databaseURL: "https://stock-a30ff.firebaseio.com",
@@ -9,7 +9,7 @@ const firebaseConfig = {
         appId: "1:628920247502:web:93439270d44745fc435c9f"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
 
 // Get elements
 const txtEmail = document.getElementById("textEmail");
@@ -30,7 +30,7 @@ btnLogin.addEventListener("click", e => {
 });
 
 // Add signup event
-btnSignUp.addEventListener("click", e => {
+btnSignup.addEventListener("click", e => {
     //Get email and pass
     // TODO: CHECK 4 REAL EMAILZ
     const email = txtEmail.value;
