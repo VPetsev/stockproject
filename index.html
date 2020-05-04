@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  style="background-image: url(/images/toTheMoonResize.jpg);">
+<html lang="en" style="background-image: url(/images/toTheMoonResize.jpg);">
 
 <head>
     <meta charset="utf-8">
@@ -16,13 +16,15 @@
     <div class="container" style="display:block; text-align: center; ">
         <br>
         <hr>
-        <div class="card bg-light" style="background-image: url(images/plasma_d.gif); margin-right: auto;margin-left: auto; display: inline-block; background-size: cover;">
+        <div class="card bg-light"
+            style="background-image: url(images/plasma_d.gif); margin-right: auto;margin-left: auto; display: inline-block; background-size: cover;">
             <article class="card-body mx-auto" style="max-width: 400px;">
                 <h4 class="card-title mt-3 text-center" style="color: #f9f9f9;">Create Account</h4>
                 <p class="text-center" style="color: #fefefe;">Get started with your free account</p>
                 <p>
                     <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-                    <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+                    <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via
+                        facebook</a>
                 </p>
                 <p class="divider-text"> <span class="bg-light">OR</span> </p>
                 <form>
@@ -30,7 +32,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="Full name" type="text">
+                        <input id="txtName" name="" class="form-control" placeholder="Full name" type="text">
                     </div>
 
                     <!-- form-group// -->
@@ -47,12 +49,12 @@
                             <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                         </div>
                         <select class="custom-select" style="max-width: 120px;">
-                                <option selected="">+1</option>
-                                <option value="1">+972</option>
-                                <option value="2">+198</option>
-                                <option value="3">+701</option>
-                            </select>
-                        <input name="" class="form-control" placeholder="Phone number" type="text">
+                            <option selected="">+1</option>
+                            <option value="1">+972</option>
+                            <option value="2">+198</option>
+                            <option value="3">+701</option>
+                        </select>
+                        <input id="txtPhone" name="" class="form-control" placeholder="Phone number" type="text">
                     </div>
 
                     <!-- form-group// -->
@@ -78,8 +80,8 @@
                     </div> -->
 
                     <!-- form-group// -->
-                    <div id="btnSignUp" class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Create account </button>
+                    <div class="form-group">
+                        <button id="btnSignUp" type="submit" class="btn btn-primary btn-block"> Create account </button>
                     </div>
 
                     <!-- form-group// -->
@@ -87,7 +89,9 @@
                         <button id="btn-Login" type="submit" class="text-center btn btn-primary btn-block"> Log In </button>
                     </div> -->
                     <!--TODO: Link and change paragraph element to a submit button for log in directly from the sign up form rAther then href to sign-in.html. currently clicking Log in will redirect to sign-in.html. Need to add ID="btnLogin" to sign-in.html as well!!!!-->
-                    <p id="btnLogin" class="text-center" style="color: #f7f0f0;">Have an account? <a href="sign-in.html">Log In</a> </p>
+                    <p id="btnLogin" class="text-center" style="color: #f7f0f0;">Have an account? <a
+                            href="sign-in.html">Log
+                            In</a> </p>
                 </form>
             </article>
         </div>
@@ -121,6 +125,6 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     </script> -->
-</body>
+    </body>
 
 </html>
