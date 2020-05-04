@@ -38,7 +38,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="Email address" type="email">
+                        <input id="txtEmail" name="" class="form-control" placeholder="Email address" type="email">
                     </div>
 
                     <!-- form-group// -->
@@ -47,7 +47,7 @@
                             <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                         </div>
                         <select class="custom-select" style="max-width: 120px;">
-                                <option selected="">+971</option>
+                                <option selected="">+1</option>
                                 <option value="1">+972</option>
                                 <option value="2">+198</option>
                                 <option value="3">+701</option>
@@ -66,24 +66,28 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Create password" type="password">
+                        <input id="txtPassword" class="form-control" placeholder="Password" type="password">
                     </div>
 
                     <!-- form-group// -->
-                    <div class="form-group input-group">
+                    <!-- <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
                         <input class="form-control" placeholder="Repeat password" type="password">
+                    </div> -->
+
+                    <!-- form-group// -->
+                    <div id="btnSignUp" class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Create account </button>
                     </div>
 
                     <!-- form-group// -->
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-                    </div>
-
-                    <!-- form-group// -->
-                    <p class="text-center" style="color: #f7f0f0;">Have an account? <a href="">Log In</a> </p>
+                    <!-- <div class="form-group" style="color: #f7f0f0;">
+                        <button id="btn-Login" type="submit" class="text-center btn btn-primary btn-block"> Log In </button>
+                    </div> -->
+                    <!--TODO: Link and change paragraph element to a submit button for log in directly from the sign up form rAther then href to sign-in.html. currently clicking Log in will redirect to sign-in.html. Need to add ID="btnLogin" to sign-in.html as well!!!!-->
+                    <p id="btn-Login" class="text-center" style="color: #f7f0f0;">Have an account? <a href="sign-in.html">Log In</a> </p>
                 </form>
             </article>
         </div>
@@ -98,12 +102,12 @@
 <body>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
-
+    <script src="/assets/js/app.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
              https://firebase.google.com/docs/web/setup#available-libraries -->
 
-    <script>
-        // Your web app's Firebase configuration
+    <!-- <script>
+        Your web app's Firebase configuration
         var firebaseConfig = {
             apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
             authDomain: "stock-a30ff.firebaseapp.com",
@@ -115,7 +119,7 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-    </script>
+    </script> -->
 </body>
 
 </html>
