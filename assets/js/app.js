@@ -1,5 +1,5 @@
 
-const firebaseConfig = {
+const config = {
     apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
     authDomain: "stock-a30ff.firebaseapp.com",
     databaseURL: "https://stock-a30ff.firebaseio.com",
