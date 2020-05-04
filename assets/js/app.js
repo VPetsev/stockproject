@@ -37,7 +37,7 @@ rootRef.on('value', (snapshot) => {
 //     logIn(email, pass)
 // })
 
-btnSignUp.addEventListener('click', e => {
+btnSignup.addEventListener('click', e => {
     const email = txtEmail.value
     const pass = txtPassword.value
     const name = txtName.value
