@@ -30,7 +30,7 @@ btnLogin.addEventListener("click", e => {
 });
 
 // Add signup event
-btnSignup.addEventListener("click", e => {
+btnSignUp.addEventListener("click", e => {
     //Get email and pass
     // TODO: CHECK 4 REAL EMAILZ
     const email = txtEmail.value;
