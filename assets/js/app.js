@@ -1,14 +1,4 @@
 
-<<<<<<< HEAD
-const config = {
-        apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
-        authDomain: "stock-a30ff.firebaseapp.com",
-        databaseURL: "https://stock-a30ff.firebaseio.com",
-        projectId: "stock-a30ff",
-        storageBucket: "stock-a30ff.appspot.com",
-        messagingSenderId: "628920247502",
-        appId: "1:628920247502:web:93439270d44745fc435c9f"
-=======
 const firebaseConfig = {
     apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
     authDomain: "stock-a30ff.firebaseapp.com",
@@ -17,7 +7,6 @@ const firebaseConfig = {
     storageBucket: "stock-a30ff.appspot.com",
     messagingSenderId: "628920247502",
     appId: "1:628920247502:web:93439270d44745fc435c9f"
->>>>>>> 256d4016b0cc11441cb15667891c2911e084ef32
 };
 // Initialize Firebase
 firebase.initializeApp(config);
@@ -34,21 +23,7 @@ const btnLogout = document.getElementById("btnLogout");
 const database = firebase.database()
 let rootRef = database.ref()
 
-<<<<<<< HEAD
-// Add signup event
-btnSignup.addEventListener("click", e => {
-    //Get email and pass
-    // TODO: CHECK 4 REAL EMAILZ
-    const email = txtEmail.value;
-    const pass = txtPassword.value;
-    const auth = fireBase.auth();
-    //Sign in
-    const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
-});
-=======
 let auth = firebase.auth()
->>>>>>> 256d4016b0cc11441cb15667891c2911e084ef32
 
 rootRef.on('value', (snapshot) => {
     snapshotValue = snapshot.val()
