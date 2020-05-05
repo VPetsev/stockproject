@@ -25,14 +25,42 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button id="btnLogin" class=" btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button id="btnSignUp" class=" btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             <p class="mt-5 mb-3 text-muted" style="color: #f9f3f3;">&copy; 2020 DC-Stocks</p>
         </form>
         <!-- Bootstrap core JavaScript
     ================================================== -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script> 
+       
+       
+        <script src="/js/firebase-sign-in.js"> </script>
+         <!-- TODO: Add SDKs for Firebase products that you want to use
+                   https://firebase.google.com/docs/web/setup#available-libraries -->
+         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+           <script>
+           // Your web app's Firebase configuration
+           const firebaseConfig = {
+             apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
+             authDomain: "stock-a30ff.firebaseapp.com",
+             databaseURL: "https://stock-a30ff.firebaseio.com",
+             projectId: "stock-a30ff",
+             storageBucket: "stock-a30ff.appspot.com",
+             messagingSenderId: "628920247502",
+             appId: "1:628920247502:web:93439270d44745fc435c9f"
+           };
+           // Initialize Firebase
+           firebase.initializeApp(firebaseConfig);</script> 
+
+        <script src="/assets/js/app.js"></script> 
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/popper.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
+         <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
     </body>
 </html>
