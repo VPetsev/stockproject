@@ -18,32 +18,8 @@ rootRef.on('value', (snapshot) => {
 })
 
 
-// btnLogin.addEventListener('click', e => {
-//     const email = txtEmail.value
-//     const pass = txtPassword.value
-//     logIn(email, pass)
-// })
 
-btnSignup.addEventListener('click', e => {
-    const email = txtEmail.value
-    const pass = txtPassword.value
-    const name = txtName.value
-    signUp(email, pass, name)
-})
 
-googleSignInButton.addEventListener('click', e => {
-    signInGoogle()
-    console.log('google clicked')
-})
-
-phoneSignInButton.addEventListener('click', e => {
-    numberLogin(phone.value)
-    console.log('phone clicked')
-})
-
-btnLogout.addEventListener('click', e => {
-    firebase.auth().signOut()
-})
 
 // Add a realtime listener
 firebase.auth().onAuthStateChanged(fiebaseUser => {
@@ -58,7 +34,7 @@ firebase.auth().onAuthStateChanged(fiebaseUser => {
 
 function logIn(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(function (user) {
+        .then(function(user) {
             let emailKey = email.substr(0, email.indexOf("@"))
             firebase.database().ref("users/" + emailKey).set({
                 email: email,
@@ -67,7 +43,7 @@ function logIn(email, password) {
             })
             alert("User succesfully logged in")
         })
-        .catch(function (error) {
+        .catch(function(error) {
             alert("User cannot login")
             console.log(error)
         })
@@ -75,7 +51,7 @@ function logIn(email, password) {
 
 function signUp(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password, name)
-        .then(function (user) {
+        .then(function(user) {
             let emailKey = email.substr(0, email.indexOf("@"))
             firebase.database().ref("users/" + emailKey).set({
                 email: email,
@@ -84,18 +60,19 @@ function signUp(email, password) {
             })
             alert("User Account Created")
         })
-        .catch(function (error) {
+        .catch(function(error) {
             alert("User cannot be created")
             errorPre.innerHTML = (error.message)
             console.log(error.message)
         })
 }
+
 function logout() {
     firebase.auth().signOut()
-        .then(function () {
+        .then(function() {
             alert("user signed out")
         })
-        .catch(function (error) {
+        .catch(function(error) {
             alert("Something went wrong")
         })
 }
@@ -106,9 +83,9 @@ function updateProfile() {
         user.updateProfile({
             displayName: "Updated Name"
         })
-        user.updateEmail("test@update.com").then(function () {
+        user.updateEmail("test@update.com").then(function() {
             alert("Email Updated")
-        }).catch(function (error) {
+        }).catch(function(error) {
             alert("email not updated")
         })
     } else {
@@ -118,23 +95,23 @@ function updateProfile() {
 
 function verifyUser() {
     let user = firebase.auth().currentUser
-    user.sendEmailVerification().then(function () {
+    user.sendEmailVerification().then(function() {
         alert("Email sent!")
     }).catch("Email not sent!")
 }
 
 function deleteUser() {
     let user = firebase.auth().currentUser
-    user.delete().then(function () {
+    user.delete().then(function() {
         alert("user deleted!")
-    }).catch(function (error) {
+    }).catch(function(error) {
         alert("User not deleted!")
     })
 }
 
 function resetPassword() {
     let user = firebase.auth().currentUser
-    firebase.auth().sendPasswordResetEmail(user.email).then(function () {
+    firebase.auth().sendPasswordResetEmail(user.email).then(function() {
         alert("Email sent!")
     }).catch("Email not sent!")
 }
@@ -145,20 +122,20 @@ function signInGoogle() {
     firebase
         .auth()
         .signInWithPopup(provider)
-        .then(function (result) {
+        .then(function(result) {
             alert("User authenticated")
             let user = result.user
             console.log("User ====== ", user)
         })
-        .catch(function (error) {
+        .catch(function(error) {
             alert("Authentication failed!")
         })
 }
 
 function anonymousLogin() {
-    firebase.auth().signInAnonymously().then(function () {
+    firebase.auth().signInAnonymously().then(function() {
         alert("OK")
-    }).catch(function (error) {
+    }).catch(function(error) {
         alert("something is wrong!")
     })
 }
