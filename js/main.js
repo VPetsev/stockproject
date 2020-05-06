@@ -102,6 +102,3 @@ for (let i = 0; i < stocks.length; i++) {
 
 
 }
-
-
-
