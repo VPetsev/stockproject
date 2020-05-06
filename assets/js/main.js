@@ -25,7 +25,7 @@ searchButton.addEventListener("click", function () {
                     <ul id='cardText' style="text-align: left;">
                         
                     </ul>
-                <a href="#" class="btn btn-primary">See more about this stock</a>
+                <a href="stock-info.html" class="btn btn-primary">See more about this stock</a>
             </div>
         </div>`
             cardText.innerHTML = `<li><button class="buttons">+</button><b> ${metaData['2. Symbol'].toUpperCase()}</b> (5min Updates) <p id="percentage" style="${stockPercentageUp() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUp()}</p></li>
