@@ -44,11 +44,18 @@ document.getElementById('btnPhone').onclick = function(){
 
 function signUp(email, password) {
     console.log('sign up function fired')
+
     firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(e=>{
+            console.log("then fired")
+            window.location.href = "../main.html"
+        })
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
+            console.log(error.code + error.message)
             if (errorCode === 'auth/weak-password') {
+                console.log('Password is weak, needs at least 6 characters with a combination of letters and numbers');
                 alert('Password is weak, needs at least 6 characters with a combination of letters and numbers');
                 alert(errorMessage);
             } else {
