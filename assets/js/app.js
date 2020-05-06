@@ -1,157 +1,100 @@
-// Get elements
-const txtEmail = document.getElementById("txtEmail");
-const txtPassword = document.getElementById("txtPassword");
-const txtName = document.getElementById("txtName")
-const txtPhone = document.getElementById("txtPhone")
-const btnLogin = document.getElementById("btnLogin");
-const btnSignup = document.getElementById("btnSignup");
-const btnLogout = document.getElementById("btnLogout");
+let txtStock = document.getElementById("txtStock")
+let searchButton = document.getElementById("searchButton")
+let stockData = document.getElementById("stockData")
+let mainStocks = document.getElementById("stocksMain")
+let cardStocks = document.getElementById("cardStocks")
 
-const database = firebase.database()
-let rootRef = database.ref()
+searchButton.addEventListener("click", function () {
+    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${txtStock.value}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
+        .then(response => response.json())
+        .then(x => {
+            console.log(response)
+            txtStock.value = ""
+            metaData = x['Meta Data']
+            dailyValues = x['Time Series (5min)']
+            keyToValue2 = Object.values(dailyValues)
+            info2 = keyToValue2[0]
 
-let auth = firebase.auth()
 
-rootRef.on('value', (snapshot) => {
-    snapshotValue = snapshot.val()
-    console.log(snapshotValue)
+            cardStocks.innerHTML = `<div class="card" style="width: 18rem;">
+            <img src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" class="card-img-top" alt="logo" styles=""    border-radius: "25px 10px 0px 0px">
+            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+             
+                </h5>
+                <p class="card-text">
+                    <ul id='cardText' style="text-align: left;">
+                        
+                    </ul>
+                <a href="#" class="btn btn-primary">See more about this stock</a>
+            </div>
+        </div>`
+            cardText.innerHTML = `<li><button class="buttons">+</button><b> ${metaData['2. Symbol'].toUpperCase()}</b> (5min Updates) <p id="percentage" style="${stockPercentageUp() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUp()}</p></li>
+                            <p>Opening Price: ${info2['1. open']}</p>
+                            <p>High: ${info2['2. high']}</p>
+                            <p>Low: ${info2['3. low']}</p>
+                            <p>Closing: ${info2['4. close']}</p>
+                            <p>Volume: ${info2['5. volume']}</p>
+                            `
+
+
+        })
+    function stockPercentageUp() {
+        let result = (info2['4. close'] - info2['1. open'])
+        let result2 = parseFloat(result).toFixed(2)
+        return result2
+    }
+
+
+
+
 })
 
 
+//  STOCKS RAN ON HOME PAGE AUTOMATICALLY 
+let stocks = ['AAPL', 'FB', 'NFLX', 'JPM', 'TWTR']
 
 
 
-// Add a realtime listener
-firebase.auth().onAuthStateChanged(fiebaseUser => {
-    if (firebaseUser) {
-        console.log(firebaseUser);
-        btnLogout.classList.remove("hide");
-    } else {
-        console.log("not logged in");
-        btnLogout.classList.add("hide");
-    }
-});
+for (let i = 0; i < stocks.length; i++) {
+    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stocks[i]}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
+        .then(responseMain => responseMain.json())
+        .then(allStocks => {
+            let metaDataEntries = allStocks['Meta Data']
+            let symbol = metaDataEntries['2. Symbol']
+            let pastDataEntries = allStocks['Time Series (5min)']
+            let pastDataValues = Object.values(pastDataEntries)
+            let mostRecentValue = pastDataValues[0]
 
-function logIn(email, password) {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(function(user) {
-            let emailKey = email.substr(0, email.indexOf("@"))
-            firebase.database().ref("users/" + emailKey).set({
-                email: email,
-                password: password,
-                name: 'anon'
-            })
-            alert("User succesfully logged in")
+
+            function stockPercentageUp() {
+                let tempResult = (mostRecentValue['4. close'] - mostRecentValue['1. open'])
+                let result = parseFloat(tempResult).toFixed(2)
+                return result
+            }
+
+            cardStocks.innerHTML += `<div class="card" style="width: 18rem; display: inline-block;">
+                                            <img src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" class="card-img-top" alt="logo" border-radius: "25px 10px 0px 0px">
+                                            <div class="card text-white bg-dark mb-3" style="margin-bottom: 0px!important; max-width: 18rem;">
+                                                <p class="card-text">
+                                                    <ul id='cardText' style="text-align: left;">
+                                                    <button class="buttons">+</button> 
+                                                    <li><b> ${symbol}</b> (5min Updates)<p id="percentage" style="${stockPercentageUp() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUp()}</p></li>
+                                                    
+                                                    <p>Today's High: ${mostRecentValue['2. high']}</p>
+                                                    <p>Today's Low: ${mostRecentValue['3. low']}</p>
+                                                    <p>Recent Closing: ${mostRecentValue['4. close']}</p>
+                                                    <p>Opening Price: ${mostRecentValue['1. open']}</p>
+                                                    <p>Volume: ${mostRecentValue['5. volume']} Shares</p>   
+                                                    </ul>
+            
+                                                <a href="#" class="btn btn-primary">See more about this stock</a>
+                                            </div>
+                                        </div>`
+
         })
-        .catch(function(error) {
-            alert("User cannot login")
-            console.log(error)
-        })
+
+
 }
 
-function signUp(email, password) {
-    firebase.auth().createUserWithEmailAndPassword(email, password, name)
-        .then(function(user) {
-            let emailKey = email.substr(0, email.indexOf("@"))
-            firebase.database().ref("users/" + emailKey).set({
-                email: email,
-                password: password,
-                name: name
-            })
-            alert("User Account Created")
-        })
-        .catch(function(error) {
-            alert("User cannot be created")
-            errorPre.innerHTML = (error.message)
-            console.log(error.message)
-        })
-}
 
-function logout() {
-    firebase.auth().signOut()
-        .then(function() {
-            alert("user signed out")
-        })
-        .catch(function(error) {
-            alert("Something went wrong")
-        })
-}
 
-function updateProfile() {
-    let user = firebase.auth().currentUser
-    if (user != null) {
-        user.updateProfile({
-            displayName: "Updated Name"
-        })
-        user.updateEmail("test@update.com").then(function() {
-            alert("Email Updated")
-        }).catch(function(error) {
-            alert("email not updated")
-        })
-    } else {
-        alert("There is no user!")
-    }
-}
-
-function verifyUser() {
-    let user = firebase.auth().currentUser
-    user.sendEmailVerification().then(function() {
-        alert("Email sent!")
-    }).catch("Email not sent!")
-}
-
-function deleteUser() {
-    let user = firebase.auth().currentUser
-    user.delete().then(function() {
-        alert("user deleted!")
-    }).catch(function(error) {
-        alert("User not deleted!")
-    })
-}
-
-function resetPassword() {
-    let user = firebase.auth().currentUser
-    firebase.auth().sendPasswordResetEmail(user.email).then(function() {
-        alert("Email sent!")
-    }).catch("Email not sent!")
-}
-
-function signInGoogle() {
-    let provider = new firebase.auth.GoogleAuthProvider()
-    provider.addScope("https://www.googleapis.com/auth/contacts.readonly")
-    firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then(function(result) {
-            alert("User authenticated")
-            let user = result.user
-            console.log("User ====== ", user)
-        })
-        .catch(function(error) {
-            alert("Authentication failed!")
-        })
-}
-
-function anonymousLogin() {
-    firebase.auth().signInAnonymously().then(function() {
-        alert("OK")
-    }).catch(function(error) {
-        alert("something is wrong!")
-    })
-}
-
-function numberLogin(phoneNumber) {
-    console.log("numberLogin called!")
-    let appVerifier = new firebase.auth.RecaptchaVerifier('todo: add recaptcha div')
-
-    firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-        .then((confirmationResult) => {
-            let code = window.prompt("please, enter the 6 digit code!")
-            return confirmationResult.confirm(code)
-        }).then((result) => {
-            document.getElementById('todo: recaptcha div').innerHTML = "Authenticated"
-        }).catch((error) => {
-            console.log("Error ======= ", error)
-            document.getElementById('todo: recaptcha div').innerHTML = "Not Authenticated"
-        })
-}
