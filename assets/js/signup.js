@@ -43,6 +43,7 @@ document.getElementById('btnPhone').onclick = function(){
 }
 
 function signUp(email, password) {
+    console.log('sign up function fired')
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .catch(function (error) {
             var errorCode = error.code;

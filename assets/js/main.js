@@ -43,17 +43,11 @@ searchButton.addEventListener("click", function () {
         let result2 = parseFloat(result).toFixed(2)
         return result2
     }
-
-
-
-
 })
 
 
 //  STOCKS RAN ON HOME PAGE AUTOMATICALLY 
 let stocks = ['AAPL', 'FB', 'NFLX', 'JPM', 'TWTR']
-
-
 
 for (let i = 0; i < stocks.length; i++) {
     fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stocks[i]}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
@@ -87,13 +81,11 @@ for (let i = 0; i < stocks.length; i++) {
                                                     <p>Volume: ${mostRecentValue['5. volume']} Shares</p>   
                                                     </ul>
             
-                                                <a href="#" class="btn btn-primary">See more about this stock</a>
+                                                <a href="stock-info.html" class="btn btn-primary">See more about this stock</a>
                                             </div>
                                         </div>`
 
         })
-
-
 }
 
 
