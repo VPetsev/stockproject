@@ -1,3 +1,4 @@
+console.log("signup.js file fired")
 const firebaseConfig = {
     apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
     authDomain: "stock-a30ff.firebaseapp.com",
@@ -13,15 +14,6 @@ firebase.initializeApp(firebaseConfig);
 // Get elements
 const txtEmail = document.getElementById("txtEmail");
 const txtPassword = document.getElementById("txtPassword");
-const txtName = document.getElementById("txtName")
-const txtPhone = document.getElementById("txtPhone")
-const btnLogin = document.getElementById("btnLogin");
-const btnSignup = document.getElementById("btnSignUp");
-const btnLogout = document.getElementById("btnLogout");
-const googleSignInButton = document.getElementById("google-signin-btn")
-const phoneSignInButton = document.getElementById("phone-signin-btn")
-const preObject = document.getElementById("object")
-const passwordRpt = document.getElementById("passwordRpt")
 
 const database = firebase.database()
 let rootRef = database.ref()
@@ -35,19 +27,23 @@ document.getElementById("btnSignUp").onclick = function () {
     signUp(email, pass)
 };
 
-googleSignInButton.addEventListener('click', e => {
-    signInGoogle()
-    console.log('google clicked')
-})
+// TODO: Not functional until button is redone for google
+// 
+// document.getElementById("btnGoogle").onclick = function(){
+//     signInGoogle()
+//     console.log('google clicked')
+// }
 
-phoneSignInButton.addEventListener('click', e => {
-    numberLogin(phone.value)
-    console.log('phone clicked')
-})
+document.getElementById('btnPhone').onclick = function(){
+    // link to a phone sign in (page?)/element
+        // can also unhide a phone textbox once clicked to input phone value 
+        // also will need to hide email/pass and add recaptcha container
+    //     numberLogin(phone.value)
+    //     console.log('phone clicked')
+}
 
 function signUp(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
-    console.log("true")
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -64,29 +60,13 @@ function signUp(email, password) {
             }
         })
 }
-
-function updateProfile() {
-    let user = firebase.auth().currentUser
-    if (user != null) {
-        user.updateProfile({
-            displayName: "Updated Name"
-        })
-        user.updateEmail("test@update.com").then(function () {
-            alert("Email Updated")
-        }).catch(function (error) {
-            alert("email not updated")
-        })
-    } else {
-        alert("There is no user!")
-    }
-}
-
-function verifyUser() {
-    let user = firebase.auth().currentUser
-    user.sendEmailVerification().then(function () {
-        alert("Email sent!")
-    }).catch("Email not sent!")
-}
+// email verification - features is not working yet
+// function verifyUser() {
+//     let user = firebase.auth().currentUser
+//     user.sendEmailVerification().then(function () {
+//         alert("Email sent!")
+//     }).catch("Email not sent!")
+// }
 
 function signInGoogle() {
     let provider = new firebase.auth.GoogleAuthProvider()
@@ -128,6 +108,28 @@ function numberLogin(phoneNumber) {
         })
 }
 
+
+////////////////////////////////////////////
+//          ADMIN FEATURES                //
+////////////////////////////////////////////
+
+// function updateProfile() {
+//     let user = firebase.auth().currentUser
+//     if (user != null) {
+//         user.updateProfile({
+//             displayName: "Updated Name"
+//         })
+//         user.updateEmail("test@update.com").then(function () {
+//             alert("Email Updated")
+//         }).catch(function (error) {
+//             alert("email not updated")
+//         })
+//     } else {
+//         alert("There is no user!")
+//     }
+// }
+
+
 // function deleteUser() {
 //     let user = firebase.auth().currentUser
 //     user.delete().then(function () {
@@ -143,6 +145,10 @@ function numberLogin(phoneNumber) {
 //         alert("Email sent!")
 //     }).catch("Email not sent!")
 // }
+
+
+
+// TO BE IMPLEMENTED FEATURES
 
 
 // btnLogout.addEventListener('click', e => {
@@ -163,7 +169,6 @@ function numberLogin(phoneNumber) {
 //     snapshotValue = snapshot.val()
 //     console.log(snapshotValue)
 // })
-// TODO: be implemented
 // function logout() {
 //     firebase.auth().signOut()
 //         .then(function () {

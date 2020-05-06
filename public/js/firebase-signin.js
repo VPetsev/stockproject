@@ -1,4 +1,5 @@
-console.log('test')
+console.log("signin.js file fired")
+
 // Get elements
 const txtEmail = document.getElementById("txtEmail");
 const txtPassword = document.getElementById("txtPassword");

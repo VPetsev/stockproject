@@ -1,4 +1,5 @@
-console.log('test')
+console.log("signup.js file fired")
+
 // Get elements
 const txtEmail = document.getElementById("txtEmail");
 const txtPassword = document.getElementById("txtPassword");
@@ -23,11 +24,6 @@ document.getElementById("btnSignUp").onclick = function () {
     const pass = txtPassword.value
     signUp(email, pass)
 };
-
-googleSignInButton.addEventListener('click', e => {
-    signInGoogle()
-    console.log('google clicked')
-})
 
 phoneSignInButton.addEventListener('click', e => {
     numberLogin(phone.value)
