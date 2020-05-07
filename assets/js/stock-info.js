@@ -5,9 +5,8 @@ function parseData(stock, type, callback) {
     fetch(`https://sandbox.iexapis.com/stable/stock/${stock}/batch?types=news,chart&range=3m&last=5&token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
         .then(responseMain => responseMain.json())
         .then(allInfo => {
-            const typeData = allInfo[`${type}`]
-            // console.log(dataSource)
-            callback(typeData, stock)
+            const typeOfData = allInfo[`${type}`]
+            callback(typeOfData, stock)
         })
 }
 
@@ -95,7 +94,26 @@ function testFunction(data, symbol) {
     });
 }
 
-$(function () {
+function companyInfo(stock, callback){
+    fetch(`https://sandbox.iexapis.com/stable/stock/${stock}/company?token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
+        .then(responseMain => responseMain.json())
+        .then(allInfo => {
+            console.log(allInfo)
+                        text = `
+                    <h2><b>${allInfo.companyName}</b> </h2><h3> ${allInfo.symbol}</h3>
+                    <span>
+                        <p>${allInfo.description}</p>
+                        <span>${allInfo.website}</span>
+                    </span>`
+            callback(allInfo, text)
+})
+}
+
+companyInfo(mySymbol, drawerFunction)
+
+function drawerFunction(allInfo, text){
+    console.log(allInfo, text)
+    $(function () {
     $("#content").html(text);
 
     var drawer = $("#drawer").dxDrawer({
@@ -156,3 +174,4 @@ $(function () {
         }
     });
 });
+}
