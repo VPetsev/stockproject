@@ -16,3 +16,20 @@ li {
 }
 
 
+@media only screen and (min-width: 320px) and (max-width: 813px) {
+
+    .card {
+        display: flex;
+        align-items: left;
+       
+    }
+    .buttons {
+        width: 29px;
+        height: 29px;
+        border-style: solid;
+        border-color: rgb(153, 156, 153);
+        border-width: 2px;
+
+    }
+ 
+}

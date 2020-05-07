@@ -3,6 +3,8 @@ body {
     height: 100%;
 }
 
+
+
 body {
     display: -ms-flexbox;
     display: -webkit-box;
@@ -51,4 +53,8 @@ body {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+
+#txtEmail {
+    margin-bottom: 8px;
 }
