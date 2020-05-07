@@ -3,6 +3,29 @@ let txtStockw = document.getElementById("txtStockw")
 let cardStocksw = document.getElementById("cardStocksw")
 let stockDataw= document.getElementById("stockDataw")
 
+
+const firebaseConfigx = {
+    apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
+    authDomain: "stock-a30ff.firebaseapp.com",
+    databaseURL: "https://stock-a30ff.firebaseio.com",
+    projectId: "stock-a30ff",
+    storageBucket: "stock-a30ff.appspot.com",
+    messagingSenderId: "628920247502",
+    appId: "1:628920247502:web:93439270d44745fc435c9f"
+}
+
+let defaultProjectx = firebase.initializeApp(firebaseConfigx)
+let databasex = firebase.database()
+let rootRefx = databasex.ref()
+let authx = firebase.auth()
+let watchlist2 = rootRef.child("Watchlist")
+
+
+
+
+
+
+
 searchButtonw.addEventListener("click", function () {
     fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${txtStockw.value}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
         .then(response => response.json())
@@ -46,43 +69,51 @@ searchButtonw.addEventListener("click", function () {
     
 })
 
-for (let i = 0; i < watchListArray.length; i++) {
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${watchListArray[i]}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
-        .then(responseMainw => responseMainw.json())
-        .then(allStocksw => {
-            let metaDataEntriesw = allStocksw['Meta Data']
-            let symbolw = metaDataEntriesw['2. Symbol']
-            let pastDataEntriesw = allStocksw['Time Series (5min)']
-            let pastDataValuesw = Object.values(pastDataEntriesw)
-            let mostRecentValuew = pastDataValuesw[0]
+
+watchlist2.on("value", function(snapshot){
+    newArray = Object.values(snapshot.val())
+    console.log(newArray)
+})
 
 
-            function stockPercentageUpw() {
-                let tempResultw = (mostRecentValuew['4. close'] - mostRecentValueww['1. open'])
-                let resultw = parseFloat(tempResultw).toFixed(2)
-                return resultw
-            }
 
-            cardStocksw.innerHTML += `<div class="card" style="width: 18rem; display: inline-block;">
-                                            <img src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" class="card-img-top" alt="logo" border-radius: "25px 10px 0px 0px">
-                                            <div class="card text-white bg-dark mb-3" style="margin-bottom: 0px!important; max-width: 18rem;">
-                                                <p class="card-text">
-                                                    <ul id='cardText' style="text-align: left;">
-                                                    <button class="buttons" onclick="addToWatchlist('${symbolw}')">+</button> 
-                                                    <li><b> ${symbolw}</b> (Today's Latest Data)<p id="percentage" style="${stockPercentageUpw() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUpw()}</p></li>
+// for (let i = 0; i < array.length; i++) {
+//     fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${watchListArray[i]}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
+//         .then(responseMainw => responseMainw.json())
+//         .then(allStocksw => {
+//             let metaDataEntriesw = allStocksw['Meta Data']
+//             let symbolw = metaDataEntriesw['2. Symbol']
+//             let pastDataEntriesw = allStocksw['Time Series (5min)']
+//             let pastDataValuesw = Object.values(pastDataEntriesw)
+//             let mostRecentValuew = pastDataValuesw[0]
+
+
+//             function stockPercentageUpw() {
+//                 let tempResultw = (mostRecentValuew['4. close'] - mostRecentValueww['1. open'])
+//                 let resultw = parseFloat(tempResultw).toFixed(2)
+//                 return resultw
+//             }
+
+//             cardStocksw.innerHTML += `<div class="card" style="width: 18rem; display: inline-block;">
+//                                             <img src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" class="card-img-top" alt="logo" border-radius: "25px 10px 0px 0px">
+//                                             <div class="card text-white bg-dark mb-3" style="margin-bottom: 0px!important; max-width: 18rem;">
+//                                                 <p class="card-text">
+//                                                     <ul id='cardText' style="text-align: left;">
+//                                                     <button class="buttons" onclick="addToWatchlist('${symbolw}')">+</button> 
+//                                                     <li><b> ${symbolw}</b> (Today's Latest Data)<p id="percentage" style="${stockPercentageUpw() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUpw()}</p></li>
                                                     
-                                                    <p>Today's High: ${mostRecentValuew['2. high']}</p>
-                                                    <p>Today's Low: ${mostRecentValuew['3. low']}</p>
-                                                    <p>Recent Closing: ${mostRecentValuew['4. close']}</p>
-                                                    <p>Opening Price: ${mostRecentValuew['1. open']}</p>
-                                                    <p>Volume: ${mostRecentValuew['5. volume']} Shares</p>   
-                                                    </ul>
+//                                                     <p>Today's High: ${mostRecentValuew['2. high']}</p>
+//                                                     <p>Today's Low: ${mostRecentValuew['3. low']}</p>
+//                                                     <p>Recent Closing: ${mostRecentValuew['4. close']}</p>
+//                                                     <p>Opening Price: ${mostRecentValuew['1. open']}</p>
+//                                                     <p>Volume: ${mostRecentValuew['5. volume']} Shares</p>   
+//                                                     </ul>
             
-                                                <a href="stock-info.html" class="btn btn-primary">See more about this stock</a>
-                                            </div>
-                                        </div>`
+//                                                 <a href="stock-info.html" class="btn btn-primary">See more about this stock</a>
+//                                             </div>
+//                                         </div>`
 
-        })
-}
+//         })
+// }
 
 
