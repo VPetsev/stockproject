@@ -1,17 +1,42 @@
 var navigation = [
-    { id: 1, text: "Products", icon: "product" },
-    { id: 2, text: "Sales", icon: "money" },
-    { id: 3, text: "Customers", icon: "group" },
-    { id: 4, text: "Employees", icon: "card" },
-    { id: 5, text: "Reports", icon: "chart" }
+    { id: 1, text: "Home", icon: "home" },
+    { id: 2, text: "Settings", icon: "preferences" },
+    { id: 3, text: "News", icon: "group" },
+    { id: 4, text: "misc...", icon: "card" },
+    { id: 5, text: "misc...", icon: "chart" }
 ];
 
-console.log(navigation)
+parseData(mySymbol, 'news', newsFunction)
+let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-var text = "\
-<h2>\
-    <b>Drawer Demo</b>\
-</h2>\
-<p>\
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Penatibus et magnis dis parturient. Eget dolor morbi non arcu risus. Tristique magna sit amet purus gravida quis blandit. Auctor urna nunc id cursus metus aliquam eleifend mi in. Tellus orci ac auctor augue mauris augue neque gravida. Nullam vehicula ipsum a arcu. Nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi. Cursus in hac habitasse platea dictumst. Egestas dui id ornare arcu. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim.</p><p>Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar. Neque volutpat ac tincidunt vitae semper quis lectus. Sed sed risus pretium quam vulputate dignissim suspendisse in. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Amet cursus sit amet dictum sit amet justo donec enim. Vestibulum rhoncus est pellentesque elit ullamcorper. Id aliquet risus feugiat in ante metus dictum at.\
-</p>";
+function newsFunction(newsData, symbol) {
+    console.log(newsData)
+    let tempText = ""
+    for (let i = 0; i < newsData.length; i++) {
+        let news = newsData[i]
+        let sum = news.summary.substring(0, 100)
+        let textcontainer =
+            `<h2>\
+            <b>Relevant news for ${symbol}</b>\
+        </h2>\
+            <p>\
+                <div class="newsContainer">\
+                    <a href="${news.url}"<img src="${news.image}></img></a>   \
+                    <div class="news-title">\
+                    <h3>${news.headline}</h3>\
+                        <h6>${news.datetime}</h6>\
+                    </div>\
+                    <span>${sum}...</span>\
+                    <a href="${news.url}"><span>source: ${news.source}: Read More <i class="dx-icon-link"></i></a></span>\
+                </div>\
+            </p>\
+            \
+            `
+        tempText += textcontainer
+    }
+    console.log('fired')
+    text += tempText
+    return tempText
+}
+
+console.log(text)

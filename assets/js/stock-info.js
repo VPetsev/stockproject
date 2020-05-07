@@ -1,8 +1,105 @@
+let mySymbol = sessionStorage.mySymbol
+parseData(mySymbol, 'chart', testFunction)
+
+function parseData(stock, type, callback) {
+    fetch(`https://sandbox.iexapis.com/stable/stock/${stock}/batch?types=news,chart&range=3m&last=5&token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
+        .then(responseMain => responseMain.json())
+        .then(allInfo => {
+            const typeData = allInfo[`${type}`]
+            // console.log(dataSource)
+            callback(typeData, stock)
+        })
+}
+
+function testFunction(data, symbol) {
+    console.log(data, symbol)
+    $(function () {
+        var chart = $("#zoomedChart").dxChart({
+            title: symbol + " Stock Prices",
+            dataSource: data,
+            valueAxis: {
+                valueType: "numeric"
+            },
+            margin: {
+                right: 10
+            },
+            argumentAxis: {
+                grid: {
+                    visible: true
+                },
+                label: {
+                    visible: true
+                },
+                valueMarginsEnabled: false,
+                argumentType: "date"
+            },
+            tooltip: {
+                enabled: true
+            },
+            legend: {
+                visible: false
+            },
+            series: [{
+                type: "candleStick",
+                openValueField: "open",
+                highValueField: "high",
+                lowValueField: "low",
+                closeValueField: "close",
+                argumentField: "date",
+                aggregation: {
+                    enabled: true
+                }
+            }],
+            crosshair: {
+                enabled: true,
+                label: {
+                    visible: true
+                }
+            },
+            argumentAxis: {
+                workdaysOnly: true,
+                workWeek: [1, 2, 3, 4, 5]
+            }
+        }).dxChart("instance");
+
+        $("#range-selector").dxRangeSelector({
+            size: {
+                height: 120
+            },
+            dataSource: data,
+            chart: {
+                valueAxis: { valueType: "numeric" },
+                series: {
+                    type: "line",
+                    valueField: "open",
+                    argumentField: "date",
+                    aggregation: {
+                        enabled: true
+                    }
+                }
+            },
+            scale: {
+                minorTickInterval: "day",
+                tickInterval: "month",
+                valueType: "datetime",
+                placeholderHeight: 20
+            },
+            behavior: {
+                callValueChanged: "onMoving",
+                snapToTicks: false
+            },
+            onValueChanged: function (e) {
+                chart.getArgumentAxis().visualRange(e.value);
+            }
+        });
+    });
+}
+
 $(function () {
     $("#content").html(text);
 
     var drawer = $("#drawer").dxDrawer({
-        opened: true,
+        opened: false,
         height: 400,
         closeOnOutsideClick: true,
         template: function () {
@@ -59,111 +156,3 @@ $(function () {
         }
     });
 });
-
-function parseData(stock, callback) {
-
-    let dataSource = []
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stock}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
-        .then(responseMain => responseMain.json())
-        .then(allStocks => {
-            metaData = allStocks['Meta Data']
-            symbol = metaData['2. Symbol']
-            dailyValues = allStocks['Time Series (5min)']
-            keyToValue2 = Object.entries(dailyValues)
-
-            for (let i = 0; i < keyToValue2.length; i++) {
-                let element = keyToValue2[i]
-                let object = {
-                    'Date': element[0],
-                    'Open': element[1]['1. open'],
-                    'High': element[1]['2. high'],
-                    'Low': element[1]['3. low'],
-                    'Close': element[1]['4. close'],
-                    'Volume': element[1]['5. volume'],
-                    'Name': symbol
-                }
-                dataSource.push(object)
-            }
-            // console.log(dataSource)
-            callback(dataSource, symbol)
-        })
-    // return dataSource
-}
-
-
-parseData('AAPL', testFunction)
-
-function testFunction(data, symbol) {
-    console.log(data)
-    $(function () {
-        var chart = $("#zoomedChart").dxChart({
-            title: symbol + " Stock Prices",
-            dataSource: data,
-            valueAxis: {
-                valueType: "numeric"
-            },
-            margin: {
-                right: 10
-            },
-            argumentAxis: {
-                grid: {
-                    visible: true
-                },
-                label: {
-                    visible: false
-                },
-                valueMarginsEnabled: false,
-                argumentType: "datetime"
-            },
-            tooltip: {
-                enabled: true
-            },
-            legend: {
-                visible: false
-            },
-            series: [{
-                type: "candleStick",
-                openValueField: "Open",
-                highValueField: "High",
-                lowValueField: "Low",
-                closeValueField: "Close",
-                argumentField: "Date",
-                aggregation: {
-                    enabled: true
-                }
-            }]
-        }).dxChart("instance");
-
-        $("#range-selector").dxRangeSelector({
-            size: {
-                height: 120
-            },
-            dataSource: data,
-            chart: {
-                valueAxis: { valueType: "numeric" },
-                series: {
-                    type: "line",
-                    valueField: "Open",
-                    argumentField: "Date",
-                    aggregation: {
-                        enabled: true
-                    }
-                }
-            },
-            scale: {
-                minorTickInterval: "day",
-                tickInterval: "month",
-                valueType: "datetime",
-                aggregationInterval: "week",
-                placeholderHeight: 20
-            },
-            behavior: {
-                callValueChanged: "onMoving",
-                snapToTicks: false
-            },
-            onValueChanged: function (e) {
-                chart.getArgumentAxis().visualRange(e.value);
-            }
-        });
-    });
-}
