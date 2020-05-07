@@ -4,16 +4,10 @@ let cardStocksw = document.getElementById("cardStocksw")
 let stockDataw= document.getElementById("stockDataw")
 
 searchButtonw.addEventListener("click", function () {
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${txtStockw.value}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
+    fetch(`https://sandbox.iexapis.com/stable/stock/${txtStockw.value}/previous?token=Tpk_4aa9dbaa5e0d48d497c96a35ce0d7493`)
         .then(response => response.json())
-        .then(x => {
-            
-            txtStockw.value = ""
-            metaDataw = x['Meta Data']
-            dailyValuesw = x['Time Series (5min)']
-            keyToValue2w = Object.values(dailyValuesw)
-            info2w = keyToValue2w[0]
-
+        .then(allInfo => {
+            console.log(allInfo)
 
             cardStocksw.innerHTML = `<div class="card" style="width: 18rem; display: inline-block;">
             <img src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" class="card-img-top" alt="logo" styles=""    border-radius: "25px 10px 0px 0px">
@@ -23,31 +17,28 @@ searchButtonw.addEventListener("click", function () {
                 <p class="card-text">
                     <ul id='cardText' style="text-align: left;">
                     <button class="buttons">+</button>
-                    <li><b> ${metaDataw['2. Symbol'].toUpperCase()}</b> (Today's Latest Data) <p id="percentage" style="${stockPercentageUpw() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUpw()}</p></li>
-                            <p>Opening Price: ${info2w['1. open']}</p>
-                            <p>High: ${info2w['2. high']}</p>
-                            <p>Low: ${info2w['3. low']}</p>
-                            <p>Closing: ${info2w['4. close']}</p>
-                            <p>Volume: ${info2w['5. volume']}</p>
+                    <li><b> ${allInfo.symbol}</b> (Today's Latest Data) <p id="percentage" style="${allInfo.change > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${allInfo.change > 0 ? `+${parseFloat(allInfo.change).toFixed(2)}(${parseFloat(allInfo.changePercent).toFixed(2)}%)` : `${parseFloat(allInfo.change).toFixed(2)}(${parseFloat(allInfo.changePercent).toFixed(2)}%)`}</p></li>
+
+                    <p>Today's High: ${allInfo.high}</p>
+                    <p>Today's Low: ${allInfo.low}</p>
+                    <p>Recent Closing: ${allInfo.close}</p>
+                    <p>Opening Price: ${allInfo.open}</p>
+                    <p>Volume: ${allInfo.volume} Shares</p>  
+                    <p>Date: ${allInfo.date}</p> 
                         
                     </ul>
-                <a href="stock-info.html" class="btn btn-primary">See more about this stock</a>
+                    <a href="stock-info.html" style="text-align: center;">
+                        <button onclick="grabInfo('${allInfo.symbol}')" class="btn btn-primary">
+                            See more about this stock
+                        </button>
+                    </a>
             </div>
         </div>`
-           
-
-
         })
-    function stockPercentageUpw() {
-        let resultw = (info2w['4. close'] - info2w['1. open'])
-        let result2w = parseFloat(resultw).toFixed(2)
-        return result2w
-    }
-    
 })
 
 for (let i = 0; i < watchListArray.length; i++) {
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${watchListArray[i]}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
+    fetch(`https://sandbox.iexapis.com/stable/stock/${stocks[i]}/previous?token=Tpk_4aa9dbaa5e0d48d497c96a35ce0d7493`)
         .then(responseMainw => responseMainw.json())
         .then(allStocksw => {
             let metaDataEntriesw = allStocksw['Meta Data']

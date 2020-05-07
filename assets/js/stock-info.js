@@ -5,9 +5,8 @@ function parseData(stock, type, callback) {
     fetch(`https://sandbox.iexapis.com/stable/stock/${stock}/batch?types=news,chart&range=3m&last=5&token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
         .then(responseMain => responseMain.json())
         .then(allInfo => {
-            const typeData = allInfo[`${type}`]
-            // console.log(dataSource)
-            callback(typeData, stock)
+            const typeOfData = allInfo[`${type}`]
+            callback(typeOfData, stock)
         })
 }
 
@@ -95,65 +94,85 @@ function testFunction(data, symbol) {
     });
 }
 
-$(function () {
-    $("#content").html(text);
+function companyInfo(stock, callback) {
+    fetch(`https://sandbox.iexapis.com/stable/stock/${stock}/company?token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
+        .then(responseMain => responseMain.json())
+        .then(allInfo => {
+            console.log(allInfo)
+            text = `
+                    <h2><b>${allInfo.companyName}</b><h3>(${allInfo.symbol})</h3></h2>
+                    <span>
+                        <p>Company Summary: ${allInfo.description}</p>
+                        <span>Website: ${allInfo.website}</span>
+                        <p>Address: ${allInfo.address} ${allInfo.city}, ${allInfo.state}, ${allInfo.country}</p>
+                    </span>`
+            callback(allInfo, text)
+        })
+}
 
-    var drawer = $("#drawer").dxDrawer({
-        opened: false,
-        height: 400,
-        closeOnOutsideClick: true,
-        template: function () {
-            var $list = $("<div>").width(200).addClass("panel-list");
+companyInfo(mySymbol, drawerFunction)
 
-            return $list.dxList({
-                dataSource: navigation,
-                hoverStateEnabled: false,
-                focusStateEnabled: false,
-                activeStateEnabled: false,
-                elementAttr: { class: "dx-theme-accent-as-background-color" }
-            });
-        }
-    }).dxDrawer("instance");
+function drawerFunction(allInfo, text) {
+    console.log(allInfo, text)
+    $(function () {
+        $("#content").html(text);
 
-    $("#toolbar").dxToolbar({
-        items: [{
-            widget: "dxButton",
-            location: "before",
-            options: {
-                icon: "menu",
-                onClick: function () {
-                    drawer.toggle();
-                }
+        var drawer = $("#drawer").dxDrawer({
+            opened: false,
+            height: 400,
+            closeOnOutsideClick: true,
+            template: function () {
+                var $list = $("<div>").width(200).addClass("panel-list");
+
+                return $list.dxList({
+                    dataSource: navigation,
+                    hoverStateEnabled: false,
+                    focusStateEnabled: false,
+                    activeStateEnabled: false,
+                    elementAttr: { class: "dx-theme-accent-as-background-color" }
+                });
             }
-        }]
-    });
+        }).dxDrawer("instance");
 
-    $("#reveal-mode").dxRadioGroup({
-        items: ["slide", "expand"],
-        layout: "horizontal",
-        value: "slide",
-        onValueChanged: function (e) {
-            drawer.option("revealMode", e.value);
-        }
-    });
+        $("#toolbar").dxToolbar({
+            items: [{
+                widget: "dxButton",
+                location: "before",
+                options: {
+                    icon: "menu",
+                    onClick: function () {
+                        drawer.toggle();
+                    }
+                }
+            }]
+        });
 
-    $("#opened-state-mode").dxRadioGroup({
-        items: ["push", "shrink", "overlap"],
-        layout: "horizontal",
-        value: "shrink",
-        onValueChanged: function (e) {
-            drawer.option("openedStateMode", e.value);
-            $("#reveal-mode-option").css("visibility", e.value !== "push" ? "visible" : "hidden");
-        }
-    });
+        $("#reveal-mode").dxRadioGroup({
+            items: ["slide", "expand"],
+            layout: "horizontal",
+            value: "slide",
+            onValueChanged: function (e) {
+                drawer.option("revealMode", e.value);
+            }
+        });
 
-    $("#position-mode").dxRadioGroup({
-        items: ["left", "right"],
-        layout: "horizontal",
-        value: "left",
-        onValueChanged: function (e) {
-            drawer.option("position", e.value);
-        }
-    });
-});
+        $("#opened-state-mode").dxRadioGroup({
+            items: ["push", "shrink", "overlap"],
+            layout: "horizontal",
+            value: "shrink",
+            onValueChanged: function (e) {
+                drawer.option("openedStateMode", e.value);
+                $("#reveal-mode-option").css("visibility", e.value !== "push" ? "visible" : "hidden");
+            }
+        });
 
+        $("#position-mode").dxRadioGroup({
+            items: ["left", "right"],
+            layout: "horizontal",
+            value: "left",
+            onValueChanged: function (e) {
+                drawer.option("position", e.value);
+            }
+        });
+    });
+}
