@@ -19,20 +19,17 @@ searchButton.addEventListener("click", function () {
                                                     <button class="buttons" onclick="addToWatchlist('${stocks[i]}')">+</button> 
                                                     <li><b> ${stocks[i]}</b> (Today's Latest Data)<p id="percentage" style="${allInfo.change > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${allInfo.change > 0 ? `+${parseFloat(allInfo.change).toFixed(2)}(${allInfo.changePercent}%)` : `${parseFloat(allInfo.change).toFixed(2)}(${allInfo.changePercent}%)`}</p></li>
                                                     
-                        <p>Today's High: ${allInfo.high}</p>
-                        <p>Today's Low: ${allInfo.low}</p>
-                        <p>Recent Closing: ${allInfo.close}</p>
-                        <p>Opening Price: ${allInfo.open}</p>
-                        <p>Volume: ${allInfo.volume} Shares</p>   
-                        <p>Date: ${allInfo.date}</p>
-                        </ul>
+                                                <p>Today's High: ${allInfo.high}</p>
+                                                <p>Today's Low: ${allInfo.low}</p>
+                                                <p>Recent Closing: ${allInfo.close}</p>
+                                                <p>Opening Price: ${allInfo.open}</p>
+                                                <p>Volume: ${allInfo.volume} Shares</p>   
+                                                <p>Date: ${allInfo.date}</p>
+                                                </ul>
             
-                    <a href="stock-info.html"><button onclick="grabInfo('${allInfo.symbol}')" class="btn btn-primary">See more about this stock</button></a>
+                                                <a href="stock-info.html"><button onclick="grabInfo('${allInfo.symbol}')" class="btn btn-primary">See more about this stock</button></a>
                                             </div>
                                         </div>`
-           
-
-
         })
 })
 
@@ -54,18 +51,17 @@ for (let i = 0; i < stocks.length; i++) {
                                                     <button class="buttons" onclick="addToWatchlist('${stocks[i]}')">+</button> 
                                                     <li><b> ${stocks[i]}</b> (Today's Latest Data)<p id="percentage" style="${allInfo.change > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${allInfo.change > 0 ? `+${parseFloat(allInfo.change).toFixed(2)}(${allInfo.changePercent}%)` : `${parseFloat(allInfo.change).toFixed(2)}(${allInfo.changePercent}%)`}</p></li>
                                                     
-                        <p>Today's High: ${allInfo.high}</p>
-                        <p>Today's Low: ${allInfo.low}</p>
-                        <p>Recent Closing: ${allInfo.close}</p>
-                        <p>Opening Price: ${allInfo.open}</p>
-                        <p>Volume: ${allInfo.volume} Shares</p>  
-                        <p>Date: ${allInfo.date}</p> 
-                        </ul>
+                                                <p>Today's High: ${allInfo.high}</p>
+                                                <p>Today's Low: ${allInfo.low}</p>
+                                                <p>Recent Closing: ${allInfo.close}</p>
+                                                <p>Opening Price: ${allInfo.open}</p>
+                                                <p>Volume: ${allInfo.volume} Shares</p>  
+                                                <p>Date: ${allInfo.date}</p> 
+                                                </ul>
             
-                    <a href="stock-info.html"><button onclick="grabInfo('${allInfo.symbol}')" class="btn btn-primary">See more about this stock</button></a>
+                                            <a href="stock-info.html" style="text-align: center;><button onclick="grabInfo('${allInfo.symbol}')" class="btn btn-primary">See more about this stock</button></a>
                                             </div>
                                         </div>`
-
         })
 }
 
