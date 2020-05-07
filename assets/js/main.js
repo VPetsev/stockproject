@@ -24,6 +24,7 @@ searchButton.addEventListener("click", function () {
                         <p>Recent Closing: ${allInfo.close}</p>
                         <p>Opening Price: ${allInfo.open}</p>
                         <p>Volume: ${allInfo.volume} Shares</p>   
+                        <p>Date: ${allInfo.date}</p>
                         </ul>
             
                     <a href="stock-info.html"><button onclick="grabInfo('${allInfo.symbol}')" class="btn btn-primary">See more about this stock</button></a>
@@ -57,7 +58,8 @@ for (let i = 0; i < stocks.length; i++) {
                         <p>Today's Low: ${allInfo.low}</p>
                         <p>Recent Closing: ${allInfo.close}</p>
                         <p>Opening Price: ${allInfo.open}</p>
-                        <p>Volume: ${allInfo.volume} Shares</p>   
+                        <p>Volume: ${allInfo.volume} Shares</p>  
+                        <p>Date: ${allInfo.date}</p> 
                         </ul>
             
                     <a href="stock-info.html"><button onclick="grabInfo('${allInfo.symbol}')" class="btn btn-primary">See more about this stock</button></a>
