@@ -1,4 +1,4 @@
-var array = []
+
 let txtStock = document.getElementById("txtStock")
 let searchButton = document.getElementById("searchButton")
 let stockData = document.getElementById("stockData")
@@ -6,23 +6,16 @@ let mainStocks = document.getElementById("stocksMain")
 let cardStocks = document.getElementById("cardStocks")
 
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
-    authDomain: "stock-a30ff.firebaseapp.com",
-    databaseURL: "https://stock-a30ff.firebaseio.com",
-    projectId: "stock-a30ff",
-    storageBucket: "stock-a30ff.appspot.com",
-    messagingSenderId: "628920247502",
-    appId: "1:628920247502:web:93439270d44745fc435c9f"
-}
 
-let defaultProject = firebase.initializeApp(firebaseConfig)
+
+
 let database = firebase.database()
 let rootRef = database.ref()
-let auth = firebase.auth()
+
+
 let watchlist = rootRef.child("Watchlist")
 
-console.log(database)
+
 
 
 
@@ -123,7 +116,7 @@ function addToWatchlist(symbol) {
     })
     watchlist.on("value", function(snapshot){
         array = Object.values(snapshot.val())
-        console.log(array)
+        
         
 
         
