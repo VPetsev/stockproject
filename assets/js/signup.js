@@ -48,9 +48,8 @@ function signUp(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(e=>{
             console.log("then fired")
-            window.location.href = "../main.html"
         })
-        .catch(function (error) {
+        .catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
             console.log(error.code + error.message)
@@ -66,7 +65,9 @@ function signUp(email, password) {
                     alert(errorMessage);
                 }
             }
+
         })
+        window.location.href = "../main.html"
 }
 // email verification - features is not working yet
 // function verifyUser() {
