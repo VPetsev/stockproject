@@ -1,100 +1,17 @@
-$(function () {
-    $("#content").html(text);
-
-    var drawer = $("#drawer").dxDrawer({
-        opened: true,
-        height: 400,
-        closeOnOutsideClick: true,
-        template: function () {
-            var $list = $("<div>").width(200).addClass("panel-list");
-
-            return $list.dxList({
-                dataSource: navigation,
-                hoverStateEnabled: false,
-                focusStateEnabled: false,
-                activeStateEnabled: false,
-                elementAttr: { class: "dx-theme-accent-as-background-color" }
-            });
-        }
-    }).dxDrawer("instance");
-
-    $("#toolbar").dxToolbar({
-        items: [{
-            widget: "dxButton",
-            location: "before",
-            options: {
-                icon: "menu",
-                onClick: function () {
-                    drawer.toggle();
-                }
-            }
-        }]
-    });
-
-    $("#reveal-mode").dxRadioGroup({
-        items: ["slide", "expand"],
-        layout: "horizontal",
-        value: "slide",
-        onValueChanged: function (e) {
-            drawer.option("revealMode", e.value);
-        }
-    });
-
-    $("#opened-state-mode").dxRadioGroup({
-        items: ["push", "shrink", "overlap"],
-        layout: "horizontal",
-        value: "shrink",
-        onValueChanged: function (e) {
-            drawer.option("openedStateMode", e.value);
-            $("#reveal-mode-option").css("visibility", e.value !== "push" ? "visible" : "hidden");
-        }
-    });
-
-    $("#position-mode").dxRadioGroup({
-        items: ["left", "right"],
-        layout: "horizontal",
-        value: "left",
-        onValueChanged: function (e) {
-            drawer.option("position", e.value);
-        }
-    });
-});
+// let mySymbol = sessionStorage.mySymbol
+let mySymbol = "AAPL" 
+parseData(mySymbol, chartFunction)
 
 function parseData(stock, callback) {
-
-    let dataSource = []
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stock}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
+    fetch(`https://sandbox.iexapis.com/stable/stock/${stock}/chart/3m?token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
         .then(responseMain => responseMain.json())
-        .then(allStocks => {
-            metaData = allStocks['Meta Data']
-            symbol = metaData['2. Symbol']
-            dailyValues = allStocks['Time Series (5min)']
-            keyToValue2 = Object.entries(dailyValues)
-
-            for (let i = 0; i < keyToValue2.length; i++) {
-                let element = keyToValue2[i]
-                let object = {
-                    'Date': element[0],
-                    'Open': element[1]['1. open'],
-                    'High': element[1]['2. high'],
-                    'Low': element[1]['3. low'],
-                    'Close': element[1]['4. close'],
-                    'Volume': element[1]['5. volume'],
-                    'Name': symbol
-                }
-                dataSource.push(object)
-            }
-            // console.log(dataSource)
-            callback(dataSource, symbol)
+        .then(allInfo => {
+            callback(allInfo, stock)
         })
-    // return dataSource
 }
 
-
-parseData('AAPL', testFunction)
-
-function testFunction(data, symbol) {
-    console.log(data)
+function chartFunction(data, symbol) {
+    console.log(data, symbol)
     $(function () {
         var chart = $("#zoomedChart").dxChart({
             title: symbol + " Stock Prices",
@@ -110,10 +27,10 @@ function testFunction(data, symbol) {
                     visible: true
                 },
                 label: {
-                    visible: false
+                    visible: true
                 },
                 valueMarginsEnabled: false,
-                argumentType: "datetime"
+                argumentType: "date"
             },
             tooltip: {
                 enabled: true
@@ -123,15 +40,25 @@ function testFunction(data, symbol) {
             },
             series: [{
                 type: "candleStick",
-                openValueField: "Open",
-                highValueField: "High",
-                lowValueField: "Low",
-                closeValueField: "Close",
-                argumentField: "Date",
+                openValueField: "open",
+                highValueField: "high",
+                lowValueField: "low",
+                closeValueField: "close",
+                argumentField: "date",
                 aggregation: {
                     enabled: true
                 }
-            }]
+            }],
+            crosshair: {
+                enabled: true,
+                label: {
+                    visible: true
+                }
+            },
+            argumentAxis: {
+                workdaysOnly: true,
+                workWeek: [1, 2, 3, 4, 5]
+            }
         }).dxChart("instance");
 
         $("#range-selector").dxRangeSelector({
@@ -143,8 +70,8 @@ function testFunction(data, symbol) {
                 valueAxis: { valueType: "numeric" },
                 series: {
                     type: "line",
-                    valueField: "Open",
-                    argumentField: "Date",
+                    valueField: "open",
+                    argumentField: "date",
                     aggregation: {
                         enabled: true
                     }
@@ -154,7 +81,6 @@ function testFunction(data, symbol) {
                 minorTickInterval: "day",
                 tickInterval: "month",
                 valueType: "datetime",
-                aggregationInterval: "week",
                 placeholderHeight: 20
             },
             behavior: {
@@ -166,4 +92,57 @@ function testFunction(data, symbol) {
             }
         });
     });
+    companyInfo(symbol)
 }
+
+function companyInfo(stock) {
+    fetch(`https://sandbox.iexapis.com/stable/stock/${stock}/company?token=Tpk_4aa9dbaa5e0d48d497c96a35ce0d7493`)
+        .then(responseMain => responseMain.json())
+        .then(allInfo => {
+            let companyInfo = document.getElementById("company-information")
+            console.log(allInfo)
+            companyInfo.innerHTML = `
+                    <h2><b>${allInfo.companyName}</b><h3>(${allInfo.symbol})</h3></h2>
+                    <span>
+                        <p>Company Summary: ${allInfo.description}</p>
+                        <span>Website: ${allInfo.website}</span>
+                        <p>Address: ${allInfo.address} ${allInfo.city}, ${allInfo.state}, ${allInfo.country}</p>
+                    </span>`
+        })
+}
+// company info onload?
+// companyInfo(mySymbol)
+
+// let stocks = ['AAPL', 'FB', 'NFLX']
+
+
+fetch(`https://sandbox.iexapis.com/stable/stock/market/batch?symbols=AAPL,FB,NFLX,JPM,AMZN&types=news&last=5&token=Tpk_4aa9dbaa5e0d48d497c96a35ce0d7493`)
+    .then(response => response.json())
+    .then(allInfo => {
+        let exampleNews = document.getElementById("example-news")
+        let stockEntries = Object.entries(allInfo)
+        let stockNames = stockEntries.map(e=>e[0])
+        let stockValues = stockEntries.map(ele=>ele[1])
+
+        let randomCompanyIndex = stockNames.indexOf(stockNames[Math.floor(Math.random()*stockNames.length)])
+        let company = stockValues[randomCompanyIndex].news[Math.floor(Math.random()*5)]
+        console.log(company)
+
+            exampleNews.innerHTML += `
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="${company.image}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <a href="${company.url}>
+                            <h5 class="card-title">${company.headline}</h5>
+                            <p class="card-text">${company.summary}</p>
+                            <p class="card-text"><small class="text-muted">Published at: ${company.datetime} | From: ${company.source}</small></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        })

@@ -42,7 +42,6 @@ searchButtonw.addEventListener("click", function () {
                             <p>Low: ${info2w['3. low']}</p>
                             <p>Closing: ${info2w['4. close']}</p>
                             <p>Volume: ${info2w['5. volume']}</p>
-                        
                     </ul>
                 <a href="stock-info.html" class="btn btn-primary">See more about this stock</a>
             </div>
@@ -80,11 +79,19 @@ function x(array) {
                 let mostRecentValuew = pastDataValuesw[0]
 
 
+<<<<<<< HEAD
                 function stockPercentageUpw() {
                     let tempResultw = (mostRecentValuew['4. close'] - mostRecentValuew['1. open'])
                     let resultw = parseFloat(tempResultw).toFixed(2)
                     return resultw
                 }
+=======
+            function stockPercentageUpw() {
+                let tempResultw = (mostRecentValuew['4. close'] - mostRecentValuew['1. open'])
+                let resultw = parseFloat(tempResultw).toFixed(2)
+                return resultw
+            }
+>>>>>>> f4eb2b598cfab3b12e0cfa9b4160b9ce0e98bf92
 
                 cardStocksw.innerHTML += `<div class="card" style="width: 18rem; display: inline-block;">
                                             <img src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" class="card-img-top" alt="logo" border-radius: "25px 10px 0px 0px">
