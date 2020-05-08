@@ -1,5 +1,5 @@
-// let mySymbol = sessionStorage.mySymbol
-let mySymbol = "AAPL" 
+let mySymbol = sessionStorage.mySymbol
+
 parseData(mySymbol, chartFunction)
 
 function parseData(stock, callback) {
@@ -111,8 +111,8 @@ function companyInfo(stock) {
                     </span>`
         })
 }
-// company info onload?
-// companyInfo(mySymbol)
+
+companyInfo(mySymbol)
 
 // let stocks = ['AAPL', 'FB', 'NFLX']
 
@@ -125,25 +125,34 @@ fetch(`https://sandbox.iexapis.com/stable/stock/market/batch?symbols=AAPL,FB,NFL
         let stockNames = stockEntries.map(e=>e[0])
         let stockValues = stockEntries.map(ele=>ele[1])
 
-        let randomCompanyIndex = stockNames.indexOf(stockNames[Math.floor(Math.random()*stockNames.length)])
-        let company = stockValues[randomCompanyIndex].news[Math.floor(Math.random()*5)]
-        console.log(company)
-
+        let tempArr = []
+        for (let i = 0; i < stockNames.length; i++){
+            let randomCompanyIndex = stockNames.indexOf(stockNames[Math.floor(Math.random() * stockNames.length)])
+            let company = stockValues[randomCompanyIndex].news[Math.floor(Math.random() * 5)]
+            console.log(company)
+            tempArr.push(company)
+        }
+        let sortedArr = tempArr.map(obj=>(obj.datetime)).sort((a, b)=>a-b)
+        sortedArr.forEach((ele)=>{
             exampleNews.innerHTML += `
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="${company.image}" class="card-img" alt="...">
+                        <img src="${ele.image}" class="card-img" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                        <a href="${company.url}>
-                            <h5 class="card-title">${company.headline}</h5>
-                            <p class="card-text">${company.summary}</p>
-                            <p class="card-text"><small class="text-muted">Published at: ${company.datetime} | From: ${company.source}</small></p>
+                        <a href="${ele.url}>
+                            <h5 class="card-title">${ele.headline}</h5>
+                            <p class="card-text">${ele.summary}</p>
+                            <p class="card-text"><small class="text-muted">Published at: ${ele.datetime} | From: ${ele.source}</small></p>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>`
+        })
+
+
+
         })
