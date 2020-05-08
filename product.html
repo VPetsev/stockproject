@@ -266,30 +266,37 @@
                 </div>
             </div>
         </div>
-        <div id='container'>
-            <hr>
-            <h1>Your Daily Dose of Todays Top Headlines</h1>
-            <nav class="newsNav">
-                <a href="#top" id="nav1" onclick="loadNews(1)" class="border border-warning text-warning" data-toggle="tooltip" title="Click for Featured Articles" data-placement="auto top">Featured</a>
-                <a href="#top" id="nav2" onclick="loadNews(2)" class="bg-secondary border border-warning text-warning" data-toggle="tooltip" title="Click For Tech Articles" data-placement="auto top">Technology</a>
-                <a href="#top" id="nav3" onclick="loadNews(3)" class="bg-secondary border border-warning text-warning" data-toggle="tooltip" title="Click for Business Article" data-placement="top">Business</a>
-                <a href="#top" id="nav4" onclick="loadNews(4)" class="bg-secondary border border-warning text-warning" data-toggle="tooltip" title="Click for Entertainment Articles" data-placement="auto top">Entertainment</a>
-                <a href="#top" id="nav5" onclick="loadNews(5)" class="bg-secondary border border-warning text-warning" data-toggle="tooltip" title="Click for Health Articles" data-placement="auto top">Health</a>
-                <a href="#top" id="nav6" onclick="loadNews(6)" class="bg-secondary border border-warning text-warning" data-toggle="tooltip" title="Click for Science Articles" data-placement="auto top">Science</a>
-                <a href="#top" id="nav7" onclick="loadNews(7)" class="border border-warning text-warning" title="Click for Sports" data-toggle="tooltip" data-placement="auto top">Sports</a>
-            </nav>
+        <body>
             <div id="wrapper">
                 <div id="header-container">
+                    <header>
+                        <h1>Related News</h1>
+                    </header>
                     <div id="navWrapper" class="scrollmenu">
+                        <nav2>
+                            <a href="#top" id="nav1" onclick="loadNews(1)">Featured</a>
+                            <a href="#top" id="nav2" onclick="loadNews(2)">Technology</a>
+                            <a href="#top" id="nav3" onclick="loadNews(3)">Business</a>
+                            <a href="#top" id="nav4" onclick="loadNews(4)">Entertainment</a>
+                            <a href="#top" id="nav5" onclick="loadNews(5)">Health</a>
+                            <a href="#top" id="nav6" onclick="loadNews(6)">Science</a>
+                            <a href="#top" id="nav7" onclick="loadNews(7)">Sports</a> 
+                        </nav2>
                         <div class="keepOpen"></div>
                     </div>
                 </div>
-                <!-- page content here -->
                 <main>
                     <div id="main-body">
                         <section id="left">
-                            <div class="card" onclick="clickCard(0)" style="grid-area:1 / 1 / 2 / 1;">
+                            <div class="card" onclick="clickCard(0)">
                                 <img class="headline-image" id="headline-0-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-0"></div>
+                                    <div class="description" id="description-0"></div>
+                                    <div class="source" id="source-0"></div>
+                                    <div class="time" id="time-0"></div>
+                                    <div id="clear"></div>
+                                </div>
                             </div>
                             <div class="card" onclick="clickCard(1)">
                                 <img class="headline-image" id="headline-1-image">
@@ -361,7 +368,7 @@
                                     <div id="clear"></div>
                                 </div>
                             </div>
-                            <div class="card" onclick="clickCard(8)" style="grid-area: A / A/ A / A;">
+                            <div class="card" onclick="clickCard(8)">
                                 <img class="headline-image" id="headline-8-image">
                                 <div class="container">
                                     <div class="headline" id="headline-8"></div>
@@ -382,16 +389,9 @@
                                 </div>
                             </div>
                         </section>
-                        <section id="right" class="bg-dark">
+                        <section id="right">
                             <div class="card" onclick="clickCard(10)">
                                 <img class="headline-image" id="headline-10-image">
-                                <div class="container">
-                                    <div class="headline" id="headline-10"></div>
-                                    <div class="description" id="description-10"></div>
-                                    <div class="source" id="source-10"></div>
-                                    <div class="time" id="time-10"></div>
-                                    <div id="clear"></div>
-                                </div>
                                 <div class="container">
                                     <div class="headline" id="headline-10"></div>
                                     <div class="description" id="description-10"></div>
@@ -440,6 +440,56 @@
                                     <div id="clear"></div>
                                 </div>
                             </div>
+                            <div class="card" onclick="clickCard(15)">
+                                <img class="headline-image" id="headline-15-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-15"></div>
+                                    <div class="description" id="description-15"></div>
+                                    <div class="source" id="source-15"></div>
+                                    <div class="time" id="time-15"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(16)">
+                                <img class="headline-image" id="headline-16-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-16"></div>
+                                    <div class="description" id="description-16"></div>
+                                    <div class="source" id="source-16"></div>
+                                    <div class="time" id="time-16"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(17)">
+                                <img class="headline-image" id="headline-17-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-17"></div>
+                                    <div class="description" id="description-17"></div>
+                                    <div class="source" id="source-17"></div>
+                                    <div class="time" id="time-17"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(18)">
+                                <img class="headline-image" id="headline-18-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-18"></div>
+                                    <div class="description" id="description-18"></div>
+                                    <div class="source" id="source-18"></div>
+                                    <div class="time" id="time-18"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(19)">
+                                <img class="headline-image" id="headline-19-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-19"></div>
+                                    <div class="description" id="description-19"></div>
+                                    <div class="source" id="source-19"></div>
+                                    <div class="time" id="time-19"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
                         </section>
                         <footer>
                             <p><a href="https://newsapi.org/">News Api</a></p>
@@ -455,8 +505,6 @@
     $('[data-toggle="tooltip"]').tooltip();
 })
 </script>
-    </div>
-    <!-- end wrapper -->
-    <script src="assets/js/stock-info.js"></script>
-    <script type="text/javascript" src="assets/js/newsAPI.js"></script>
-</body>
+        <!-- end wrapper -->
+        <script src="assets/js/stock-info.js"></script>
+        <script type="text/javascript" src="assets/js/newsAPI.js"></script>

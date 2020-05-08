@@ -175,8 +175,7 @@ main #featured {
 .headline-image {
     margin-top: 0;
     width: 100%;
-
-    /* object-position: left */
+    object-position: -2px;
     height: 50%;
 }
 
@@ -219,7 +218,7 @@ main #featured {
 
     /* 5px rounded corners */
     background-color: #e3e6ef;
-    color: blue;
+    color: white;
     margin-top: .5rem;
     margin-bottom: .5rem;
     margin-left: .5rem;
@@ -230,8 +229,8 @@ main #featured {
 .container {
     padding: 2px 16px;
     overflow: hidden;
-    width: 75%;
-    height: auto;
+    max-height: 75x;
+    bottom: -;
 }
 
 img {

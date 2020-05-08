@@ -1,3 +1,12 @@
+
+// var key = '0b6a7f4a5eba4bdda60557b4792450bb';
+
+// function loadNews(category) {
+
+//     var url = 'http://newsapi.org/v2/top-headlines?' +
+//     'country=us&' +
+//     'apiKey=0b6a7f4a5eba4bdda60557b4792450bb';
+//     document.getElementById('nav1').className = "active";
 /*jslint node:true */
 'use strict';
 
@@ -9,13 +18,13 @@ var key = '0b6a7f4a5eba4bdda60557b4792450bb';
 function loadNews(category) {
 
     var url = 'http://newsapi.org/v2/top-headlines?' +
-            'country=us&' +
-            'apiKey=' + key;
+        'country=us&' +
+        'apiKey=0b6a7f4a5eba4bdda60557b4792450bb';
     document.getElementById('nav1').className = "active";
     
     
     if (category === 1) { //featured
-        url = 'http://newsapi.org/v2/top-headlines?' +
+        url = '//newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'apiKey=' + key;
         document.getElementById('nav1').className = "active";
@@ -28,7 +37,7 @@ function loadNews(category) {
         currentPage = category;
         
     } else if (category === 2) { //tech
-        url = 'http://newsapi.org/v2/top-headlines?' +
+        url = '//newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=technology&' +
             'apiKey=' + key;
@@ -41,7 +50,7 @@ function loadNews(category) {
         document.getElementById('nav7').className = "";
         currentPage = category;
     } else if (category === 3) { //business
-        url = 'http://newsapi.org/v2/top-headlines?' +
+        url = '//newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=business&' +
             'apiKey=' + key;
@@ -54,7 +63,7 @@ function loadNews(category) {
         document.getElementById('nav7').className = "";
         currentPage = category;
     } else if (category === 4) { //entertainment
-        url = 'http://newsapi.org/v2/top-headlines?' +
+        url = '//newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=entertainment&' +
             'apiKey=' + key;
@@ -67,7 +76,7 @@ function loadNews(category) {
         document.getElementById('nav7').className = "";
         currentPage = category;
     } else if (category === 5) { //health
-        url = 'http://newsapi.org/v2/top-headlines?' +
+        url = '//newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=health&' +
             'apiKey=' + key;
@@ -80,7 +89,7 @@ function loadNews(category) {
         document.getElementById('nav7').className = "";
         currentPage = category;
     } else if (category === 6) { //science
-        url = 'http://newsapi.org/v2/top-headlines?' +
+        url = '//newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=science&' +
             'apiKey=' + key;
@@ -93,7 +102,7 @@ function loadNews(category) {
         document.getElementById('nav7').className = "";
         currentPage = category;
     } else if (category === 7) { //sports
-        url = 'http://newsapi.org/v2/top-headlines?' +
+        url = '//newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=sports&' +
             'apiKey=' + key;
@@ -166,21 +175,17 @@ var touchstartX = 0;
 var touchstartY = 0;
 var touchendX = 0;
 var touchendY = 0;
-
 var limit = Math.tan(45 * 1.5 / 180 * Math.PI);
 var gestureZone = document.getElementById('main-body');
-
 gestureZone.addEventListener('touchstart', function (event) {
     touchstartX = event.changedTouches[0].screenX;
     touchstartY = event.changedTouches[0].screenY;
 }, false);
-
 gestureZone.addEventListener('touchend', function (event) {
     touchendX = event.changedTouches[0].screenX;
     touchendY = event.changedTouches[0].screenY;
     handleGesture(event);
 }, false);
-
 function handleGesture(e) {
     var x = touchendX - touchstartX;
     var y = touchendY - touchstartY;

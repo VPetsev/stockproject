@@ -2,15 +2,26 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <title>Product example for Bootstrap</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Product example for Bootstrap</title>
+        <!-- removes the browser interface -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="mobile-web-app-capable" content="yes">
+        <!--<link rel="manifest" href="manifest.webmanifest">-->
+        <!--<link rel="manifest" href="manifest.webmanifest">-->
+        <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+      <![endif]-->
         <!-- Bootstrap core CSS -->
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="product.css" rel="stylesheet">
+        <link href="css/newsAPI.css" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Faster+One&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fugaz+One&display=swap">
     </head>
@@ -26,13 +37,15 @@
                         <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
                         <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
                     </svg> </a>
-                <a class="py-2 d-none d-md-inline-block" href="product.html">Home</a>
+                <a class="py-2 d-none d-md-inline-block" href="product.html#about-us">Home</a>
                 <a class="py-2 d-none d-md-inline-block" href="watchlist.html">Watchlist</a>
-                <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
-                <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
-                <a class="py-2 d-none d-md-inline-block" href="#">About Us</a>
                 <a class="py-2 d-none d-md-inline-block" href="sign-in.html">Log In</a>
                 <a class="py-2 d-none d-md-inline-block" href="sign-up.html">Sign Up</a>
+                <a class="py-2 d-none d-md-inline-block" href="#about-us">About Us</a>
+                <div class="text-center">
+                    <input class="py-2 d-none d-md-inline-block" id="txtStockw" type="text" placeholder="Search For A Stock">
+                    <button id="searchButtonw">Find Stock</button>
+                </div>
             </div>
         </nav>
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
@@ -42,7 +55,7 @@
                 <a class="btn btn-outline-secondary text-white" href="sign-up.html">Sign Up</a>
                 <br>
             </div>
-            <div class="product-device box-shadow d-none d-md-block"></div>
+            <div class="box-shadow d-md-block d-none deviceBG product-device">STOCK WATCHER</div>
             <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
         </div>
         <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
@@ -58,22 +71,84 @@
                     <h2 class="display-5">Related News</h2>
                     <p class="lead">Up to date news and links</p>
                 </div>
-                <div id="news-container" class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-</div>
+                <div id="news-container" class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
             </div>
         </div>
-        <!-- Header -->
-        <header class=" bg-primary mb-4 mb-md-1 p-5 pb-md-5 pt-md-5 team text-center">
+        <!-- <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" src="placeholder" alt="Card image cap"> 
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Thi.</p>
+                </div>
+                <div class="card-footer"> 
+                    <small class="text-muted">Las</small> 
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="http://pinegrow.com/placeholders/img17.jpg" alt="Card image cap"> 
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer"> 
+                    <small class="text-muted">Last updated 3 mins ago</small> 
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="http://pinegrow.com/placeholders/img14.jpg" alt="Card image cap"> 
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                </div>
+                <div class="card-footer"> 
+                    <small class="text-muted">Last updated 3 mins ago</small> 
+                </div>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" src="http://pinegrow.com/placeholders/img20.jpg" alt="Card image cap"> 
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer"> 
+                    <small class="text-muted">Last updated 3 mins ago</small> 
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="http://pinegrow.com/placeholders/img17.jpg" alt="Card image cap"> 
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer"> 
+                    <small class="text-muted">Last updated 3 mins ago</small> 
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="http://pinegrow.com/placeholders/img14.jpg" alt="Card image cap"> 
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                </div>
+                <div class="card-footer"> 
+                    <small class="text-muted">Last updated 3 mins ago</small> 
+                </div>
+            </div>
+        </div> -->
+        <header class="bg-primary mb-4 py-5 team text-center">
+            <a id="about-us"></a>
             <div class="container">
                 <h1 class="font-weight-light h1 team text-white">Meet our awesome team!</h1>
             </div>
         </header>
-        <!-- Page Content -->
         <div id='container'>
             <hr>
             <div class='card'>
                 <div class='front'>
-                    <img src='http://cdn.vectroave.netdna-cdn.com/wp-content/uploads/2013/03/Animal-Portraits-by-Yago-Partal-2.jpg' class='contact'/>
+                    <img src='images/lion-with-groomed-mane-wearing-black-tuxedo-with-red-bowtie.png' class='contact'/>
                     <span class='name'>Victor Petsev</span>
                     <hr>
                     <span class='job'>- Software Engineer -</span>
@@ -191,9 +266,197 @@
                 </div>
             </div>
         </div>
+        <div id='container'>
+            <hr>
+            <h1>Your Daily Dose of Todays Top Headlines</h1>
+            <nav class="newsNav">
+                <a href="#top" id="nav1" onclick="loadNews(1)" class="border border-warning text-warning" data-toggle="tooltip" title="Click for Featured Articles" data-placement="auto top">Featured</a>
+                <a href="#top" id="nav2" onclick="loadNews(2)" class="bg-secondary border border-warning text-warning" data-toggle="tooltip" title="Click For Tech Articles" data-placement="auto top">Technology</a>
+                <a href="#top" id="nav3" onclick="loadNews(3)" class="bg-secondary border border-warning text-warning" data-toggle="tooltip" title="Click for Business Article" data-placement="top">Business</a>
+                <a href="#top" id="nav4" onclick="loadNews(4)" class="bg-secondary border border-warning text-warning" data-toggle="tooltip" title="Click for Entertainment Articles" data-placement="auto top">Entertainment</a>
+                <a href="#top" id="nav5" onclick="loadNews(5)" class="bg-secondary border border-warning text-warning" data-toggle="tooltip" title="Click for Health Articles" data-placement="auto top">Health</a>
+                <a href="#top" id="nav6" onclick="loadNews(6)" class="bg-secondary border border-warning text-warning" data-toggle="tooltip" title="Click for Science Articles" data-placement="auto top">Science</a>
+                <a href="#top" id="nav7" onclick="loadNews(7)" class="border border-warning text-warning" title="Click for Sports" data-toggle="tooltip" data-placement="auto top">Sports</a>
+            </nav>
+            <div id="wrapper">
+                <div id="header-container">
+                    <div id="navWrapper" class="scrollmenu">
+                        <div class="keepOpen"></div>
+                    </div>
+                </div>
+                <!-- page content here -->
+                <main>
+                    <div id="main-body">
+                        <section id="left">
+                            <div class="card" onclick="clickCard(0)" style="grid-area:1 / 1 / 2 / 1;">
+                                <img class="headline-image" id="headline-0-image">
+                            </div>
+                            <div class="card" onclick="clickCard(1)">
+                                <img class="headline-image" id="headline-1-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-1"></div>
+                                    <div class="description" id="description-1"></div>
+                                    <div class="source" id="source-1"></div>
+                                    <div class="time" id="time-1"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(2)">
+                                <img class="headline-image" id="headline-2-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-2"></div>
+                                    <div class="description" id="description-2"></div>
+                                    <div class="source" id="source-2"></div>
+                                    <div class="time" id="time-2"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(3)">
+                                <img class="headline-image" id="headline-3-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-3"></div>
+                                    <div class="description" id="description-3"></div>
+                                    <div class="source" id="source-3"></div>
+                                    <div class="time" id="time-3"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(4)">
+                                <img class="headline-image" id="headline-4-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-4"></div>
+                                    <div class="description" id="description-4"></div>
+                                    <div class="source" id="source-4"></div>
+                                    <div class="time" id="time-4"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(5)">
+                                <img class="headline-image" id="headline-5-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-5"></div>
+                                    <div class="description" id="description-5"></div>
+                                    <div class="source" id="source-5"></div>
+                                    <div class="time" id="time-5"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(6)">
+                                <img class="headline-image" id="headline-6-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-6"></div>
+                                    <div class="description" id="description-6"></div>
+                                    <div class="source" id="source-6"></div>
+                                    <div class="time" id="time-6"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(7)">
+                                <img class="headline-image" id="headline-7-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-7"></div>
+                                    <div class="description" id="description-7"></div>
+                                    <div class="source" id="source-7"></div>
+                                    <div class="time" id="time-7"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(8)" style="grid-area: A / A/ A / A;">
+                                <img class="headline-image" id="headline-8-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-8"></div>
+                                    <div class="description" id="description-8"></div>
+                                    <div class="source" id="source-8"></div>
+                                    <div class="time" id="time-8"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(9)">
+                                <img class="headline-image" id="headline-9-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-9"></div>
+                                    <div class="description" id="description-9"></div>
+                                    <div class="source" id="source-9"></div>
+                                    <div class="time" id="time-9"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="right" class="bg-dark">
+                            <div class="card" onclick="clickCard(10)">
+                                <img class="headline-image" id="headline-10-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-10"></div>
+                                    <div class="description" id="description-10"></div>
+                                    <div class="source" id="source-10"></div>
+                                    <div class="time" id="time-10"></div>
+                                    <div id="clear"></div>
+                                </div>
+                                <div class="container">
+                                    <div class="headline" id="headline-10"></div>
+                                    <div class="description" id="description-10"></div>
+                                    <div class="source" id="source-10"></div>
+                                    <div class="time" id="time-10"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(11)">
+                                <img class="headline-image" id="headline-11-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-11"></div>
+                                    <div class="description" id="description-11"></div>
+                                    <div class="source" id="source-11"></div>
+                                    <div class="time" id="time-11"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(12)">
+                                <img class="headline-image" id="headline-12-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-12"></div>
+                                    <div class="description" id="description-12"></div>
+                                    <div class="source" id="source-12"></div>
+                                    <div class="time" id="time-12"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(13)">
+                                <img class="headline-image" id="headline-13-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-13"></div>
+                                    <div class="description" id="description-13"></div>
+                                    <div class="source" id="source-13"></div>
+                                    <div class="time" id="time-13"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                            <div class="card" onclick="clickCard(14)">
+                                <img class="headline-image" id="headline-14-image">
+                                <div class="container">
+                                    <div class="headline" id="headline-14"></div>
+                                    <div class="description" id="description-14"></div>
+                                    <div class="source" id="source-14"></div>
+                                    <div class="time" id="time-14"></div>
+                                    <div id="clear"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <footer>
+                            <p><a href="https://newsapi.org/">News Api</a></p>
+                        </footer>
+                    </div>
+                </main>
+                <!-- end content -->
+            </div>
+        </div>
         <!-- /.row -->
+        <script>
+    $(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+})
+</script>
     </div>
+    <!-- end wrapper -->
     <script src="assets/js/stock-info.js"></script>
+    <script type="text/javascript" src="assets/js/newsAPI.js"></script>
 </body>
-<!-- /.container -->
-<!-- OUR Awesome Team -->
