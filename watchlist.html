@@ -6,14 +6,19 @@
     <title>Watchlist</title>
 
     <!-- Stylesheets -->
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<<<<<<< HEAD
+        
+=======
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="product.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Faster+One&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fugaz+One&display=swap">
+>>>>>>> f4eb2b598cfab3b12e0cfa9b4160b9ce0e98bf92
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -38,7 +43,36 @@
             </div>
         </nav>
 
+<<<<<<< HEAD
     <span><h1>Nothing Watchlisted at the moment...</h1></span>
+=======
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="main.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sign-up.html">Sign up</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="sign-in.html">
+                        Log in
+                    </a>
+                </li>
+                <li><a class="nav-link" href="watchlist.html">
+                        Watchlist<span class="sr-only">(current)</span>
+                    </a></li>
+                <li class="nav-item">
+                </li>
+            </ul>
+            <div><input id="txtStockw" type="text" placeholder="Stock Symbol"><button id="searchButtonw">Find
+                    Stock</button></div>
+        </div>
+    </nav>
+
+    </div>
+    <button id="clearWatchlist">Clear Watchlist</button>
+>>>>>>> 94c2fe45adf835dd669d88e52f7ec19ee33d78ad
     <div id="cardStocksw"></div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -50,9 +84,27 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
+
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+        <script> const firebaseConfig = {
+            apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
+            authDomain: "stock-a30ff.firebaseapp.com",
+            databaseURL: "https://stock-a30ff.firebaseio.com",
+            projectId: "stock-a30ff",
+            storageBucket: "stock-a30ff.appspot.com",
+            messagingSenderId: "628920247502",
+            appId: "1:628920247502:web:93439270d44745fc435c9f"
+        }</script>
+
+        <script>firebase.initializeApp(firebaseConfig)</script>
         
     <script src="assets/js/main.js"></script>
     <script src="assets/js/watchlistfile.js"></script>
+
+   
 </body>
 
 </html>
