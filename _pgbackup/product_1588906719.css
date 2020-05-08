@@ -4,18 +4,19 @@
     box-sizing: border-box;
     font-family: 'Fugaz One', cursive;
     margin-top: 0px;
+    color: #ffffff;
     font-style: normal;
 }
 
 body {
-    background: linear-gradient(90deg, #000000, #434343);
+    background: url('http://www.platehelp.nl/media/W1siZiIsIjIwMTUvMTAvMjcvMTBfNTZfMjBfNTU3X0lNR18xOTAxXzEuanBnIl1d/IMG_1901-1.jpg');
     background-size: cover;
 }
 
 #container {
     width: auto;
     height: auto;
-    margin-top: -18px;
+    margin-top: 80px;
     margin-bottom: 80px;
     -webkit-perspective: 800px;
     perspective: 800px;
@@ -23,7 +24,7 @@ body {
 }
 
 #container h1 {
-    /* color: #ECF6CE */
+    color: #ECF6CE;
     margin-bottom: 30px;
 }
 
@@ -37,15 +38,13 @@ body {
     margin: 10px;
     display: inline-block;
     position: relative;
-    width: 390px;
-    height: 400px;
+    width: 320px;
+    height: 360px;
     opacity: 0.85;
-    background-image: url('images/Cr4tRh8.jpg');
 }
 
 .front,
 .back {
-    background: -webkit-radial-gradient(right center, rgb(233, 211, 98) 0%, rgb(187, 171, 86) 0%, rgb(78, 75, 58) 0%, rgb(113, 106, 67) 16.129%, rgb(51, 51, 51) 64.0553%) !important;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -61,12 +60,10 @@ body {
 }
 
 .front {
-    padding-top: : 20px;
     transform: rotateY(0deg);
     text-align: center;
     padding: 30px;
-    background: -webkit-radial-gradient(right center, rgb(233, 211, 98) 0%, rgb(187, 171, 86) 0%, rgb(78, 75, 58) 0%, rgb(113, 106, 67) 16.129%, rgb(51, 51, 51) 64.0553%) !important;
-    background-image: url('images/Cr4tRh8.jpg');
+    background: linear-gradient(90deg, #000000, #434343);
 }
 
 .back {
@@ -74,6 +71,7 @@ body {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
     padding: 40px 15px;
+    color: #fff;
 }
 
 .card:hover .front {
@@ -90,34 +88,32 @@ body {
 .front .contact {
     height: 120px;
     width: 120px;
-    border: 5px solid gold;
+    border: 5px solid #B2DBBF;
     border-radius: 50%;
     display: inline-block;
-    margin-bottom: auto;
+    margin-bottom: 10px;
 }
 
 .front .name {
-    padding-top: 20px;
+    display: inline-block;
+    font-size: 18px;
     color: #fff;
-    display: block;
-    font-size: 1.8em;
 }
 
 .front .job {
-    font-size: 1.5em;
     color: #fff;
 }
 
 .front hr {
     border: none;
-    color: gold;
+    color: #B2DBBF;
     border: 1px solid;
 }
 
 .back .icon {
-    fill: #fff;
+    fill: currentColor;
     color: inherit;
-    height: auto;
+    height: 33px;
     width: 33px;
     margin-top: 15px;
     color: white;
@@ -125,7 +121,7 @@ body {
 
 .back .icon:hover {
     cursor: pointer;
-    color: gold;
+    color: #648767;
 }
 
 .container {
@@ -140,7 +136,7 @@ body {
 }
 
 .site-header a {
-    color: white;
+    color: #999;
     transition: ease-in-out color .15s;
 }
 
@@ -151,13 +147,12 @@ body {
 
 /* * Dummy devices (replace them with your own or something else entirely!) */
 .product-device {
-    /* color: rgb(187, 171, 86) 0% */
     position: absolute;
     right: 10%;
     bottom: -30%;
     width: 300px;
     height: 540px;
-    background-color: rgba(51, 51, 51, .9);
+    background-color: #333;
     border-radius: 21px;
     -webkit-transform: rotate(30deg);
     transform: rotate(30deg);
@@ -170,11 +165,8 @@ body {
     bottom: 10%;
     left: 10px;
     content: "";
-
-    /* background-color: rgba(255, 255, 255, .1) */
+    background-color: rgba(255, 255, 255, .1);
     border-radius: 5px;
-    background-image: url('images/Cr4tRh8.jpg');
-    background-size: cover;
 }
 
 .product-device-2 {
@@ -182,7 +174,7 @@ body {
     right: auto;
     bottom: 0;
     left: 5%;
-    background-color: #4d5054;
+    background-color: #e5e5e5;
 }
 
 /* * Extra utilities */
@@ -214,14 +206,14 @@ body {
 
 .overflow-hidden {
     overflow: hidden;
-    background: -webkit-radial-gradient(right center, rgb(233, 211, 98) 0%, rgb(187, 171, 86) 0%, rgb(78, 75, 58) 0%, rgb(113, 106, 67) 16.129%, rgb(51, 51, 51) 64.0553%);
+    background: linear-gradient(90deg, #000000, #434343);
 }
 
 /* FontAwesome for working BootSnippet :> */
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 #team {
-    background: black !important;
+    background: #eee !important;
 }
 
 .btn-primary:hover,
@@ -251,7 +243,7 @@ section .section-title {
 
 #team .card {
     border: none;
-    background: black;
+    background: #ffffff;
 }
 
 .image-flip:hover .backside,
@@ -349,7 +341,6 @@ section .section-title {
 
 header.team {
     background: linear-gradient(90deg, #000000, #434343);
-    margin-top: 20px;
 }
 
 header.team.h1 {
@@ -359,14 +350,5 @@ header.team.h1 {
     font-family: 'Fugaz One', cursive;
     font-variant: normal;
     text-transform: uppercase;
-}
-
-card.span.p {
-}
-
-.deviceBG {
-    color: #f5f0f0;
-    font-family: 'Fugaz One', cursive;
-    background-image: url('images/Cr4tRh8.jpg');
 }
 

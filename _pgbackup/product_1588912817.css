@@ -170,11 +170,8 @@ body {
     bottom: 10%;
     left: 10px;
     content: "";
-
-    /* background-color: rgba(255, 255, 255, .1) */
+    background-color: rgba(255, 255, 255, .1);
     border-radius: 5px;
-    background-image: url('images/Cr4tRh8.jpg');
-    background-size: cover;
 }
 
 .product-device-2 {
@@ -182,7 +179,7 @@ body {
     right: auto;
     bottom: 0;
     left: 5%;
-    background-color: #4d5054;
+    background-color: #e5e5e5;
 }
 
 /* * Extra utilities */
@@ -362,11 +359,5 @@ header.team.h1 {
 }
 
 card.span.p {
-}
-
-.deviceBG {
-    color: #f5f0f0;
-    font-family: 'Fugaz One', cursive;
-    background-image: url('images/Cr4tRh8.jpg');
 }
 
