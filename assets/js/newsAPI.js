@@ -8,14 +8,14 @@ var key = '0b6a7f4a5eba4bdda60557b4792450bb';
 
 function loadNews(category) {
 
-    var url = '//newsapi.org/v2/top-headlines?' +
+    var url = 'http://newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'apiKey=' + key;
     document.getElementById('nav1').className = "active";
     
     
     if (category === 1) { //featured
-        url = '//newsapi.org/v2/top-headlines?' +
+        url = 'http://newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'apiKey=' + key;
         document.getElementById('nav1').className = "active";
@@ -28,7 +28,7 @@ function loadNews(category) {
         currentPage = category;
         
     } else if (category === 2) { //tech
-        url = '//newsapi.org/v2/top-headlines?' +
+        url = 'http://newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=technology&' +
             'apiKey=' + key;
@@ -41,7 +41,7 @@ function loadNews(category) {
         document.getElementById('nav7').className = "";
         currentPage = category;
     } else if (category === 3) { //business
-        url = '//newsapi.org/v2/top-headlines?' +
+        url = 'http://newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=business&' +
             'apiKey=' + key;
@@ -54,7 +54,7 @@ function loadNews(category) {
         document.getElementById('nav7').className = "";
         currentPage = category;
     } else if (category === 4) { //entertainment
-        url = '//newsapi.org/v2/top-headlines?' +
+        url = 'http://newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=entertainment&' +
             'apiKey=' + key;
@@ -67,7 +67,7 @@ function loadNews(category) {
         document.getElementById('nav7').className = "";
         currentPage = category;
     } else if (category === 5) { //health
-        url = '//newsapi.org/v2/top-headlines?' +
+        url = 'http://newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=health&' +
             'apiKey=' + key;
@@ -80,7 +80,7 @@ function loadNews(category) {
         document.getElementById('nav7').className = "";
         currentPage = category;
     } else if (category === 6) { //science
-        url = '//newsapi.org/v2/top-headlines?' +
+        url = 'http://newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=science&' +
             'apiKey=' + key;
@@ -93,7 +93,7 @@ function loadNews(category) {
         document.getElementById('nav7').className = "";
         currentPage = category;
     } else if (category === 7) { //sports
-        url = '//newsapi.org/v2/top-headlines?' +
+        url = 'http://newsapi.org/v2/top-headlines?' +
             'country=us&' +
             'category=sports&' +
             'apiKey=' + key;
