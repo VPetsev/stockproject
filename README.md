@@ -11,7 +11,11 @@ Business Purpose: A source of stock information (alongside other sources) that c
 DigitalCrafts Week 6, API based app project (#weBuildTheWeb).  Built using the basics of HTML, CSS, JS, using Google's Firebase with Materialize framework.
 
 ## The Builder's:
-Victor Petsev
-Nathan Orris
-Jared Garcia
-Andrew Ellis
+
+#### Victor Petsev
+
+#### Nathan Orris
+
+#### Jared Garcia
+
+#### Andrew Ellis
