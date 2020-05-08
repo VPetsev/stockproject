@@ -9,7 +9,6 @@
 //         })
 // }
 
-
 // function chartFunction(data, symbol) {
 //     console.log(data, symbol)
 //     $(function () {
