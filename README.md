@@ -1,4 +1,4 @@
-### Stocks App
+# Stocks App
 
 This is a real-time Stock tracking app created with HTML5 CSS3 and Javascript! The app will display prices of stocks, users can create accounts, users can select favorite stocks which will save to account, users will receive email or/and push notifications when watched stock prices reach a specified point.
 
