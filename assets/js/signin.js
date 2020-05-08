@@ -39,12 +39,10 @@ window.onload = function() {
         })
 
         function logIn(email, password) {
-                firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(()=>console.log('successfully logged in'))
-                .catch(function(error) {
+            if (password === passwordRpt.value) {
+                firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    console.log(error.code, error.message)
                     if (errorCode === 'auth/wrong-password') {
                         alert('Wrong password.');
                         alert(errorMessage);
@@ -57,6 +55,7 @@ window.onload = function() {
                         }
                     }
                 })
+            }
         }
 
         function verifyUser() {
