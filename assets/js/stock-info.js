@@ -132,7 +132,9 @@ fetch(`https://sandbox.iexapis.com/stable/stock/market/batch?symbols=AAPL,FB,NFL
             console.log(company)
             tempArr.push(company)
         }
-        let sortedArr = tempArr.map(obj=>(obj.datetime)).sort((a, b)=>a-b)
+        let sortedArr = tempArr.sort((a,b)=>(a.datetime > b.datetime) ? 1 : -1)
+        console.log(sortedArr)
+
         sortedArr.forEach((ele)=>{
             exampleNews.innerHTML += `
             <div class="card mb-3" style="max-width: 540px;">
