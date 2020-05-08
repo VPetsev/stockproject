@@ -29,7 +29,6 @@ searchButtonw.addEventListener("click", function () {
                             <p>Low: ${info2w['3. low']}</p>
                             <p>Closing: ${info2w['4. close']}</p>
                             <p>Volume: ${info2w['5. volume']}</p>
-                        
                     </ul>
                 <a href="stock-info.html" class="btn btn-primary">See more about this stock</a>
             </div>
@@ -58,7 +57,7 @@ for (let i = 0; i < watchListArray.length; i++) {
 
 
             function stockPercentageUpw() {
-                let tempResultw = (mostRecentValuew['4. close'] - mostRecentValueww['1. open'])
+                let tempResultw = (mostRecentValuew['4. close'] - mostRecentValuew['1. open'])
                 let resultw = parseFloat(tempResultw).toFixed(2)
                 return resultw
             }
