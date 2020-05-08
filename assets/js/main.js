@@ -5,22 +5,9 @@ let stockData = document.getElementById("stockData")
 let mainStocks = document.getElementById("stocksMain")
 let cardStocks = document.getElementById("cardStocks")
 
-
-
-
-
 let database = firebase.database()
 let rootRef = database.ref()
-
-
 let watchlist = rootRef.child("Watchlist")
-
-
-
-
-
-
-
 
 
 searchButton.addEventListener("click", function () {
@@ -42,7 +29,7 @@ searchButton.addEventListener("click", function () {
                 </h5>
                 <p class="card-text">
                     <ul id='cardText' style="text-align: left;">
-                    <button class="buttons">+</button>
+                    <button class="buttons" onclick="addToWatchlist('${symbol}')">+</button>
                     <li><b> ${metaData['2. Symbol'].toUpperCase()}</b> (Today's Latest Data) <p id="percentage" style="${stockPercentageUp() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUp()}</p></li>
                             <p>Opening Price: ${info2['1. open']}</p>
                             <p>High: ${info2['2. high']}</p>
@@ -92,7 +79,7 @@ for (let i = 0; i < stocks.length; i++) {
                                             <div class="card text-white bg-dark mb-3" style="margin-bottom: 0px!important; max-width: 18rem;">
                                                 <p class="card-text">
                                                     <ul id='cardText' style="text-align: left;">
-                                                    <button class="buttons" onclick="addToWatchlist('${symbol}')">+</button> 
+                                                    <button class="buttons" onclick="addToWatchlist('${symbol}'); window.alert('${symbol} Successfully Added to Watchlist!')" >+</button> 
                                                     <li><b> ${symbol}</b> (Today's Latest Data)<p id="percentage" style="${stockPercentageUp() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUp()}</p></li>
                                                     
                                                     <p>Today's High: ${mostRecentValue['2. high']}</p>
@@ -120,9 +107,7 @@ function addToWatchlist(symbol) {
         
 
         
-    })
-
-    
-      
+    })  
 
 }
+
