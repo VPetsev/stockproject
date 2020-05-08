@@ -1,6 +1,4 @@
-let mySymbol = sessionStorage.mySymbol
-
-parseData(mySymbol, chartFunction)
+var mySymbol = sessionStorage.getItem('dataStored')
 
 function parseData(stock, callback) {
     fetch(`https://sandbox.iexapis.com/stable/stock/${stock}/chart/3m?token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
@@ -10,8 +8,9 @@ function parseData(stock, callback) {
         })
 }
 
+parseData(mySymbol, chartFunction)
+
 function chartFunction(data, symbol) {
-    console.log(data, symbol)
     $(function () {
         var chart = $("#zoomedChart").dxChart({
             title: symbol + " Stock Prices",
@@ -154,7 +153,4 @@ fetch(`https://sandbox.iexapis.com/stable/stock/market/batch?symbols=AAPL,FB,NFL
                 </div>
             </div>`
         })
-
-
-
         })
