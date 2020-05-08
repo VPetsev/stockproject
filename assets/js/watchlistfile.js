@@ -8,53 +8,44 @@ let rootRefx = databasex.ref()
 let authx = firebase.auth()
 let watchlist2 = rootRef.child("Watchlist")
 
-
-
-
-
 // SEARCH FUNCTION
 
 searchButtonw.addEventListener("click", function () {
     fetch(`https://sandbox.iexapis.com/stable/stock/${txtStockw.value}/chart/dynamic?token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
         .then(response => response.json())
-        .then(x => {
+        .then(allInfo => {
+            // Dynamic call - How to handle different formats for after hours vs trading hours?
+            console.log(allInfo)
+            let symbol = txtStockw.value
+            console.log(symbol)
+            function stockPercentageUp(symbol) {
+                let resultw = (symbol.close - symbol.open)
+                let result2w = parseFloat(resultw).toFixed(2)
+                return result2w
+            }
 
-            txtStockw.value = ""
-            metaDataw = x['Meta Data']
-            symbolw = metaDataw['2. Symbol']
-            dailyValuesw = x['Time Series (5min)']
-            keyToValue2w = Object.values(dailyValuesw)
-            info2w = keyToValue2w[0]
-
-
-            cardStocksw.innerHTML = `<div class="card" style="width: 18rem; display: inline-block;">
+            cardStocks.innerHTML =
+                `<div class="card" style="width: 18rem; display: inline-block;">
             <img src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" class="card-img-top" alt="logo" styles=""    border-radius: "25px 10px 0px 0px">
             <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-             
-                </h5>
-                <p class="card-text">
+                
+            <p class="card-text">
                     <ul id='cardText' style="text-align: left;">
                     <button class="buttons" onclick="addToWatchlist('${symbolw.toUpperCase()}'); window.alert('${symbolw.toUpperCase()} Successfully Added to Watchlist!'); location.href='watchlist.html'">+</button>
-                    <li><b> ${metaDataw['2. Symbol'].toUpperCase()}</b> (Today's Latest Data) <p id="percentage" style="${stockPercentageUpw() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUpw()}</p></li>
-                            <p>Opening Price: ${info2w['1. open']}</p>
-                            <p>High: ${info2w['2. high']}</p>
-                            <p>Low: ${info2w['3. low']}</p>
-                            <p>Closing: ${info2w['4. close']}</p>
-                            <p>Volume: ${info2w['5. volume']}</p>
+                    <li><b> ${symbol.toUpperCase()}</b> (Today's Latest Data) <p id="percentage" style="${stockPercentageUp(symbol) > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUp(symbol)}</p></li>
+                            <p>Opening Price: ${allInfo.open}</p>
+                            <p>High: ${allInfo.high}</p>
+                            <p>Low: ${allInfo.low}</p>
+                            <p>Closing: ${allInfo.close}</p>
+                            <p>Volume: ${allInfo.volume}</p>
                     </ul>
-                <a href="stock-info.html" class="btn btn-primary">See more about this stock</a>
+                <a href="stock-info.html" onclick="grabInfo('${symbol}')"class="btn btn-primary">See more about this stock</a>
             </div>
         </div>`
 
 
 
         })
-    function stockPercentageUpw() {
-        let resultw = (info2w['4. close'] - info2w['1. open'])
-        let result2w = parseFloat(resultw).toFixed(2)
-        return result2w
-    }
-
 })
 
 //  ADDED WATCHLIST STOCKS
@@ -103,14 +94,9 @@ function x(array) {
                                                 <a href="stock-info.html" class="btn btn-primary">See more about this stock</a>
                                             </div>
                                         </div>`
-
             })
     }
-
-
 }
-
-
 
 // DELETE FUNCTION AND CLEARING WATCHLIST
 

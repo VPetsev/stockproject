@@ -27,7 +27,8 @@ searchButtonw.addEventListener("click", function () {
             `<div class="card" style="width: 18rem; display: inline-block;">
             <img src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" class="card-img-top" alt="logo" styles=""    border-radius: "25px 10px 0px 0px">
             <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                <p class="card-text">
+                
+            <p class="card-text">
                     <ul id='cardText' style="text-align: left;">
                     <button class="buttons" onclick="addToWatchlist('${symbol}')">+</button>
                     <li><b> ${symbol.toUpperCase()}</b> (Today's Latest Data) <p id="percentage" style="${stockPercentageUp(symbol) > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUp(symbol)}</p></li>
@@ -37,11 +38,9 @@ searchButtonw.addEventListener("click", function () {
                             <p>Closing: ${allInfo.close}</p>
                             <p>Volume: ${allInfo.volume}</p>
                     </ul>
-                <a href="stock-info.html" onclick="grabInfo'${symbol}'"class="btn btn-primary">See more about this stock</a>
+                <a href="stock-info.html" onclick="grabInfo('${symbol}')"class="btn btn-primary">See more about this stock</a>
             </div>
         </div>`
-        
-           
 })
 })
 
