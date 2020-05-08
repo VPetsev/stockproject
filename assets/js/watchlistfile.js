@@ -1,20 +1,12 @@
-let searchButtonw = document.getElementById("searchButtonw")
 let txtStockw = document.getElementById("txtStockw")
 let cardStocksw = document.getElementById("cardStocksw")
 let stockDataw= document.getElementById("stockDataw")
 
 searchButtonw.addEventListener("click", function () {
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${txtStockw.value}&interval=5min&outputsize=full&apikey=OK4S8FFTLIRBGU4F`)
+    fetch(`https://sandbox.iexapis.com/stable/stock/${txtStockw.value}/chart/dynamic?token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
         .then(response => response.json())
-        .then(x => {
-            
-            txtStockw.value = ""
-            metaDataw = x['Meta Data']
-            dailyValuesw = x['Time Series (5min)']
-            keyToValue2w = Object.values(dailyValuesw)
-            info2w = keyToValue2w[0]
-
-
+        .then(allInfo => {
+            console.log(allInfo)
             cardStocksw.innerHTML = `<div class="card" style="width: 18rem; display: inline-block;">
             <img src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" class="card-img-top" alt="logo" styles=""    border-radius: "25px 10px 0px 0px">
             <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
@@ -23,7 +15,7 @@ searchButtonw.addEventListener("click", function () {
                 <p class="card-text">
                     <ul id='cardText' style="text-align: left;">
                     <button class="buttons">+</button>
-                    <li><b> ${metaDataw['2. Symbol'].toUpperCase()}</b> (Today's Latest Data) <p id="percentage" style="${stockPercentageUpw() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUpw()}</p></li>
+                    <li><b> ${txtStockw.value.toUpperCase()}</b> (Today's Latest Data) <p id="percentage" style="${stockPercentageUpw() > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUpw()}</p></li>
                             <p>Opening Price: ${info2w['1. open']}</p>
                             <p>High: ${info2w['2. high']}</p>
                             <p>Low: ${info2w['3. low']}</p>

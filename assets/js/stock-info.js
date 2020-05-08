@@ -81,10 +81,11 @@ function chartFunction(data, symbol) {
                 minorTickInterval: "day",
                 tickInterval: "month",
                 valueType: "datetime",
+                aggregationInterval: "week",
                 placeholderHeight: 20
             },
             behavior: {
-                callValueChanged: "onMoving",
+                callValueChanged: "onMovingComplete",
                 snapToTicks: false
             },
             onValueChanged: function (e) {

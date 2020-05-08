@@ -1,12 +1,12 @@
-let txtStock = document.getElementById("txtStock")
-let searchButton = document.getElementById("searchButton")
+let txtStockw = document.getElementById("txtStock")
+let searchButtonw = document.getElementById("searchButton")
 let stockData = document.getElementById("stockData")
 let mainStocks = document.getElementById("stocksMain")
 let cardStocks = document.getElementById("cardStocks")
 let watchListArray = []
 
-searchButton.addEventListener("click", function () {
-    fetch(`https://sandbox.iexapis.com/stable/stock/${stocks[i]}/previous?token=Tpk_4aa9dbaa5e0d48d497c96a35ce0d7493`)
+searchButtonw.addEventListener("click", function () {
+    fetch(`https://sandbox.iexapis.com/stable/stock/${txtStockw.value}/chart/dynamic?token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
         .then(response => response.json())
         .then(allInfo => {
             console.log(allInfo)
