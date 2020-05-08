@@ -62,12 +62,13 @@ section {
 
 body {
     margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #d4c1c1;
+    background-color: #fff;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -391,7 +392,7 @@ h1,
 
 h2,
 .h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 h3,
@@ -415,7 +416,7 @@ h6,
 }
 
 .lead {
-    font-size: 1.0rem;
+    font-size: 1.25rem;
     font-weight: 300;
 }
 
@@ -11164,9 +11165,7 @@ button.bg-dark:focus {
 }
 
 .font-weight-normal {
-    font-family: 'Fugaz One', cursive;
-    letter-spacing: 2px;
-    font-variant: small-caps;
+    font-weight: 400 !important;
 }
 
 .font-weight-bold {
