@@ -92,6 +92,7 @@ function chartFunction(data, symbol) {
             }
         });
     });
+    companyInfo(symbol)
 }
 
 function companyInfo(stock) {
