@@ -30,7 +30,11 @@ for (let i = 0; i < stocks.length; i++) {
                     <p>Date: ${mostRecent.date}</p> 
                     </ul>
 
-                <a href="stock-info.html" style="text-align: center;><button onclick="grabInfo('${symbol}')" class="btn btn-primary">See more about this stock</button></a>
+                
+                    <div>
+                        <button onclick="grabInfo('${symbol}')" class="btn btn-primary"><a href="stock-info.html" style="text-align: center;">See more about this stock</a></button>
+                    </div>
+                
                 </div>
             </div>`
         })
