@@ -19,10 +19,6 @@
     text-decoration: none;
 }
 
-.list-group-item {
-    font-weight: 900;
-}
-
 /* * Dummy devices (replace them with your own or something else entirely!) */
 .product-device {
     position: absolute;
@@ -91,11 +87,3 @@ plus-button {
     width: 10px;
     height: 10px;
 }
-
-.plus-button {
-    width: 10%;
-    height: 10%;
-    z-position: 10;
-}
-
-

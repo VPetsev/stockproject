@@ -1,5 +1,9 @@
 var mySymbol = sessionStorage.getItem('dataStored')
 
+if (mySymbol == null){
+    mySymbol = 'AAPL'
+}
+
 function parseData(stock, callback) {
     fetch(`https://sandbox.iexapis.com/stable/stock/${stock}/chart/3m?token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
         .then(responseMain => responseMain.json())

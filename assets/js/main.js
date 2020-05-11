@@ -14,7 +14,7 @@ for (let i = 0; i < stocks.length; i++) {
                 return result2w
             }
 
-            cardStocksw.innerHTML += `<div class="card" style="width: 18rem; display: inline-block;">
+            cardStocks.innerHTML += `<div class="card" style="width: 18rem; display: inline-block;">
                 <img src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" class="card-img-top" alt="logo" border-radius: "25px 10px 0px 0px">
                 <div class="card text-white bg-dark mb-3" style="margin-bottom: 0px!important; max-width: 18rem;">
                     <p class="card-text">
