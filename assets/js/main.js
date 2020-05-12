@@ -21,7 +21,6 @@ for (let i = 0; i < stocks.length; i++) {
                         <ul id='cardText' style="text-align: left;">
                         <button class="buttons" onclick="addToWatchlist('${symbol}')" window.alert('${symbol} Successfully Added to Watchlist!')" >+</button> 
                         <li><b> ${symbol}</b> (Today's Latest Data)<p id="percentage" style="${stockPercentageUp(mostRecent) > 0 ? 'color:rgb(88, 212, 88' : 'color:red'}">${stockPercentageUp(mostRecent)}</p></li>
-                        
                     <p>Today's High: ${mostRecent.high}</p>
                     <p>Today's Low: ${mostRecent.low}</p>
                     <p>Recent Closing: ${mostRecent.close}</p>

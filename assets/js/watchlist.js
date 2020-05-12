@@ -4,6 +4,7 @@ const stockData = document.getElementById("stockData")
 const searchButton = document.getElementById("searchButton")
 const mainStocks = document.getElementById("stocksMain")
 const infoType = document.getElementById("info-type")
+const cardGroup = document.getElementById("card-group")
 
 // FIREBASE
 const database = firebase.database()
@@ -15,7 +16,6 @@ const watchlist = rootRef.child("Watchlist")
 watchlist.on("value", function (snapshot) {
     newArray = Object.values(snapshot.val())
     console.log('watchlist fired')
-    console.log(newArray)
     x(newArray)
 })
 
@@ -32,7 +32,6 @@ function x(array) {
                     if (allInfo.range === '1m' || 'm1') {
                         console.log("After trading hours")
                         cardPopulatorAfterHours(allInfo.data)
-
                     } else if (allInfo.range === "dotya") {
                         console.log("During Trading hours")
                     } else {
@@ -44,12 +43,48 @@ function x(array) {
 }
 
 function cardPopulatorAfterHours(dataArr) {
-    console.log(dataArr)
-    let mostRecent = Object.entries(dataArr.slice(-1).pop())
-    for (let i = 0; i < mostRecent.length; i++){
-        console.log(mostRecent[i])
-    }
-
+    let mostRecent = dataArr[21]
+    let text = `
+            <div class="card" >
+                <img class="card-img-top" src="http://pinegrow.com/placeholders/img15.jpg" alt="Card image cap">
+                    <button type="button" class="btn btn-dark">Add to watchlist</button>
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <div class="card-body" style="border-top-left-radius: 20px; border-top-right-radius: 20px; text-align: left;">
+                            <li class="list-group-item">
+                                High: $${mostRecent.high}
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Low: ${mostRecent.low}
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Close: ${mostRecent.close}
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Volume: ${mostRecent.volume}
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Date: ${mostRecent.date}
+                                <span> </span>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated: ${mostRecent.label}</small>
+                    </div>
+                    <button type="button" class="btn btn-info">See More Info</button>                     
+                </div>
+            </div>
+                `
+    console.log('text')
+    cardGroup.innerHTML += text
+    console.log('test')
+    console.log('test1')
 }
 
                 // function stockPercentageUp() {
