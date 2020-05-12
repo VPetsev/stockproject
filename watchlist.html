@@ -7,13 +7,13 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Product example for Bootstrap</title>
-        <!-- Bootstrap core CSS -->
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="product.css" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <!-- Custom styles for this template       <link href="product.css" rel="stylesheet"> -->
+        <link rel="stylesheet" href="watchlist.css">
     </head>
     <body style="background-color: #575E6E;">
-        <nav class="site-header sticky-top py-1">
+        <div class="container">
             <div class="container d-flex flex-column flex-md-row justify-content-between">
                 <a class="py-2" href="product.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -31,7 +31,9 @@
                 <a class="py-2 d-none d-md-inline-block" href="register.html">Register</a>
                 <input type="text" placeholder="Placeholder text">
             </div>
-        </nav>
+        </div>
+        <nav class="site-header sticky-top py-1">
+</nav>
         <span> <h1 style="color: white;">Nothing Watchlisted at the moment...</h1> </span>
         <h3 style="color: white;">You may be interested in: </h3>
         <div id="cardStocks">
@@ -41,41 +43,109 @@
             ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <div class="card-group">
-            <div class="card">
-                <div class="card-img">
-                    <img class="card-img-top" src="https://c1.wallpaperflare.com/preview/297/171/764/chart-trading-courses-analysis.jpg" alt="Card image cap">
-                    <img src="images/pngwave.png" class="add-button float-right rounded-sm text-left" width="25px" height="25px">
-                </div>
-                <div class="card-body" style="border-top-left-radius: 20px; border-top-right-radius: 20px; text-align: left;">
-                    <h4 class="card-title" style="text-align: center; font-weight: 900; font-size: 42px;">
-                        Card title </h4>
-                    <li class="list-group-item">
-                        High: 
-                        <span> </span>
-                    </li>
-                    <li class="list-group-item">
-                        Low: 
-                        <span> </span>
-                    </li>
-                    <li class="list-group-item">
-                        Close:
-                        <span> </span>
-                    </li>
-                    <li class="list-group-item">
-                        Volume: 
-                        <span> </span>
-                    </li>
-                    <li class="list-group-item">
-                        Date: 
-                        <span>  </span>
-                    </li>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-                <button type="button" class="btn btn-info">Info</button>
+            <div class="card-group"> 
+                <div class="card"> 
+                    <img class="card-img-top" src="http://pinegrow.com/placeholders/img15.jpg" alt="Card image cap"> 
+                    <div class="card-body"> 
+                        <h4 class="card-title">Card title</h4> 
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <div class="card-body" style="border-top-left-radius: 20px; border-top-right-radius: 20px; text-align: left;">
+                            <li class="list-group-item">
+                                High: 
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Low: 
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Close:
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Volume: 
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Date: 
+                                <span> </span>
+                            </li>
+                        </div>                         
+                    </div>                     
+
+                    <div class="card-footer"> 
+                        <small class="text-muted">Last updated 3 mins ago</small> 
+                    </div>                     
+                </div>                 
+
+                <div class="card"> 
+                    <img class="card-img-top" src="http://pinegrow.com/placeholders/img12.jpg" alt="Card image cap"> 
+                    <div class="card-body"> 
+                        <h4 class="card-title">Card title</h4> 
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p> 
+                        <div class="card-body" style="border-top-left-radius: 20px; border-top-right-radius: 20px; text-align: left;">
+                            <li class="list-group-item">
+                                High: 
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Low: 
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Close:
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Volume: 
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Date: 
+                                <span> </span>
+                            </li>
+                        </div>
+                    </div>                     
+
+                    <div class="card-footer"> 
+                        <small class="text-muted">Last updated 3 mins ago</small> 
+                    </div>                     
+                </div>                 
+
+                <div class="card"> 
+                    <img class="card-img-top" src="http://pinegrow.com/placeholders/img16.jpg" alt="Card image cap"> 
+                    <div class="card-body"> 
+                        <h4 class="card-title">Card title</h4> 
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <div class="card-body" style="border-top-left-radius: 20px; border-top-right-radius: 20px; text-align: left;">
+                            <li class="list-group-item">
+                                High: 
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Low: 
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Close:
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Volume: 
+                                <span> </span>
+                            </li>
+                            <li class="list-group-item">
+                                Date: 
+                                <span> </span>
+                            </li>
+                        </div>                         
+                    </div>                     
+
+                    <div class="card-footer"> 
+                        <small class="text-muted">Last updated 3 mins ago</small> 
+                    </div>                     
+                </div>                 
             </div>
-            
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/popper.js"></script>
             <script src="bootstrap/js/bootstrap.min.js"></script>
