@@ -17,6 +17,7 @@ const btnLogin = document.getElementById("btnLogin")
 const loginLogic = document.getElementById("loginLogic")
 const errorCheck = document.getElementById("error-check")
 const emailCheck = document.getElementById("email-check")
+const accountLogic = document.getElementById("accountLogic")
 
 const database = firebase.database()
 let rootRef = database.ref()
@@ -35,7 +36,7 @@ function logIn(email, password) {
         .then(() => {
             console.log('successfully logged in')
             accountLogic.innerHTML = "Successfully logged in"
-            window.setInterval(() => window.location.href = "../product.html", 2000)
+            window.setInterval(() => window.location.href = "product.html", 2000)
         })
         .catch(function (error) {
             var errorCode = error.code;

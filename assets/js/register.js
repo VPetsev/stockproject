@@ -37,7 +37,7 @@ function signUp(email, password) {
         .then(e => {
             console.log("then fired")
             accountLogic.innerHTML = "Account successfully created"
-            window.setInterval(()=>window.location.href = "../product.html", 2000)
+            window.setInterval(()=>window.location.href = "product.html", 2000)
         })
         .catch(function (error) {
             var errorMessage = error.message;

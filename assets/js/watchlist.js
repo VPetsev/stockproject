@@ -27,11 +27,12 @@ function x(array) {
         for (let i = 0; i < array.length; i++) {
             fetch(`https://sandbox.iexapis.com/stable/stock/${array[i].stock}/chart/dynamic?token=Tsk_f505cc8d1a8e429e9f06fc365bb67dbb`)
                 .then(response => response.json())
-                .then(allInfo => {
+                .then((allInfo, callback) => {
                     console.log(allInfo.range)
                     if (allInfo.range === '1m' || 'm1') {
                         console.log("After trading hours")
-                        cardPopulatorAfterHours(allInfo.data)
+                        let allData = allInfo.data
+                        cardPopulatorAfterHours(allData)
                     } else if (allInfo.range === "dotya") {
                         console.log("During Trading hours")
                     } else {
@@ -43,7 +44,7 @@ function x(array) {
 }
 
 function cardPopulatorAfterHours(dataArr) {
-    let mostRecent = dataArr[21]
+    let mostRecent = dataArr.slice(-1).pop()
     let text = `
             <div class="card" >
                 <img class="card-img-top" src="http://pinegrow.com/placeholders/img15.jpg" alt="Card image cap">
@@ -57,15 +58,15 @@ function cardPopulatorAfterHours(dataArr) {
                                 <span> </span>
                             </li>
                             <li class="list-group-item">
-                                Low: ${mostRecent.low}
+                                Low: $${mostRecent.low}
                                 <span> </span>
                             </li>
                             <li class="list-group-item">
-                                Close: ${mostRecent.close}
+                                Close: $${mostRecent.close}
                                 <span> </span>
                             </li>
                             <li class="list-group-item">
-                                Volume: ${mostRecent.volume}
+                                Volume: ${mostRecent.volume} Units
                                 <span> </span>
                             </li>
                             <li class="list-group-item">
@@ -81,10 +82,7 @@ function cardPopulatorAfterHours(dataArr) {
                 </div>
             </div>
                 `
-    console.log('text')
     cardGroup.innerHTML += text
-    console.log('test')
-    console.log('test1')
 }
 
                 // function stockPercentageUp() {
