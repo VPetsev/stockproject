@@ -13,8 +13,8 @@
         <link href="product.css" rel="stylesheet">
     </head>
     <body style="background-color: #575E6E;">
-        <nav class="site-header sticky-top py-1">
-            <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <nav id="visible" class="site-header sticky-top py-1">
+            <div class="container d-flex flex-column flex-md-row justify-content-between visibleLink">
                 <a class="py-2" href="product.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
@@ -27,11 +27,18 @@
                 <a class="py-2 d-none d-md-inline-block" href="product.html">Home</a>
                 <a class="py-2 d-none d-md-inline-block" href="watchlist.html">Watchlist</a>
                 <a class="py-2 d-none d-md-inline-block" href="aboutus.html">About the Team</a>
-                <a id="login" class="py-2 d-none d-md-inline-block hide-element" href="login.html">Log In</a>
-                <a id="signup" class="py-2 d-none d-md-inline-block hide-element" href="register.html">Register</a>
+                <a id="login" class="py-2 d-none d-md-inline-block hide-element" href="login.html" hidden>Log In</a>
+                <a id="signup" class="py-2 d-none d-md-inline-block hide-element" href="register.html" hidden>Register</a>
                 <input type="text" placeholder="Placeholder text">
+                <!-- <nav id="visible" class="visibleLink">
+                    <a id="login" class="visibleLink" href="login.html">Log In</a>
+                    <button class="button" id="okButton">OK</button>
+                    <div id="awesome" class="panel" hidden>
+                    </div>
+                  </nav> -->
             </div>
         </nav>
+
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
             <div class="col-md-5 p-lg-5 mx-auto my-5">
                 <h1 class="display-4 font-weight-normal" style="color: #FDEE30;">Stock Watch</h1>
@@ -152,7 +159,6 @@
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
 
-        <script src="assets/js/firebaseInit.js"></script>
         <script src="assets/js/product.js"></script>
     </body>
 </html>

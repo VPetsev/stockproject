@@ -16,34 +16,41 @@ let rootRef = database.ref()
 let auth = firebase.auth()
 
 firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        let currentUser = firebase.auth().currentUser;
-        currentUser.email
-        hideElements(currentUser)
-    } else {
-        // No user is signed in.
-        console.log("no one is signed in")
-    }
-});
+        if (user) {
+            let currentUser = firebase.auth().currentUser;
+            console.log(' fired')
+            currentUser.email
+            console.log(currentUser.email)
+            document.getElementById('login').hidden = true;
+            document.getElementById('signup').hidden = true;
+            // hideElements(currentUser)
+        } else {
+            // No user is signed in.
+            console.log("no one is signed in")
+        }
+    });
 
-function hideElements(login, signup) {
-    document.getElementById(login).style.display= "";
-    document.getElementById(signup).style.visibility = "visible";
-    console.log('hide Element fired')
-};
+console.log('LAST LINE')
+// (function() {
 
+    
+    
+// }())
+
+// document.getElementById("okButton")
+//         .addEventListener("click", function() {
+//   document.getElementById("welcome").hidden = true;
+//   document.getElementById("awesome").hidden = false;
+// }, false);
 
 // jquery option like this
-$("#item").toggle();
-$("#item").hide();
-$("#item").show();
+// $("#item").toggle();
+// $("#item").hide();
+// $("#item").show();
 // For example:
 
-$(document).ready(function () {
-    $("#item").click(function (event) {
-        //Your actions here
-    });
-});
+
+
 
 // function hideElements(user){
 //     console.log(user.email)

@@ -19,6 +19,16 @@ const errorCheck = document.getElementById("error-check")
 const emailCheck = document.getElementById("email-check")
 const accountLogic = document.getElementById("accountLogic")
 
+
+
+
+// document.getElementById("okButton")
+//         .addEventListener("click", function() {
+//   document.getElementById("welcome").hidden = true;
+//   document.getElementById("awesome").hidden = false;
+// }, false);
+
+
 const database = firebase.database()
 let rootRef = database.ref()
 
@@ -57,3 +67,4 @@ function logIn(email, password) {
             }
         })
 }
+
