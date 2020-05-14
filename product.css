@@ -2,6 +2,14 @@
     max-width: 960px;
 }
 
+.is-invisible { 
+    display: none!important;
+}
+
+.is-visible {
+    display: inherit;
+}
+
 /* * Custom translucent site header */
 .site-header {
     background-color: rgba(0, 0, 0, .85);

@@ -15,27 +15,28 @@
 </head>
 
 <body style="background-color: #575E6E;">
-    <nav class="site-header sticky-top py-1">
-        <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2" href="product.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="d-block mx-auto">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
-                    <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
-                    <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
-                    <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
-                    <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
-                    <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
-                </svg> </a>
+        <nav id="visible" class="site-header sticky-top py-1">
+            <div class="container d-flex flex-column flex-md-row justify-content-between visibleLink">
+                <a class="py-2" href="product.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="d-block mx-auto">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+                        <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+                        <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+                        <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+                        <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+                        <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+                    </svg> </a>
                 <a class="py-2 d-none d-md-inline-block" href="product.html">Home</a>
-            <a class="py-2 d-none d-md-inline-block" href="watchlist.html">Watchlist</a>
-            <a class="py-2 d-none d-md-inline-block" href="aboutus.html">About the Team</a>
-            <a class="py-2 d-none d-md-inline-block" href="login.html">Log In</a>
-            <a class="py-2 d-none d-md-inline-block" href="register.html">Register</a>
-            <input type="text" placeholder="Placeholder text">
-        </div>
-    </nav>
+                <a class="py-2 d-none d-md-inline-block" href="watchlist.html">Watchlist</a>
+                <a class="py-2 d-none d-md-inline-block" href="aboutus.html">About the Team</a>
+                <a id="login" class="py-2 d-none d-md-inline-block" href="login.html">Log In</a>
+                <a id="signup" class="py-2 d-none d-md-inline-block" href="register.html">Register</a>
+                <a id="profile" class="py-2 d-none d-md-inline-block is-invisible" href="watchlist.html">Welcome back!</a>
+                <input type="text" placeholder="Search for a stock">
+            </div>
+        </nav>
     </div>
     <!-- Scripts -->
 
