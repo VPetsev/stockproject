@@ -15,7 +15,7 @@
 </head>
 
 <body style="background-color: #575E6E;">
-        <nav id="visible" class="site-header sticky-top py-1">
+        <nav id="visible" class="site-header sticky-top py-1" style="background-color: black;">
             <div class="container d-flex flex-column flex-md-row justify-content-between visibleLink">
                 <a class="py-2" href="product.html"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -48,21 +48,11 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <!-- FireBase Initialization -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyBz83kqwVu8gWrGAjkitG3sh5VtbWfbG2U",
-            authDomain: "stock-a30ff.firebaseapp.com",
-            databaseURL: "https://stock-a30ff.firebaseio.com",
-            projectId: "stock-a30ff",
-            storageBucket: "stock-a30ff.appspot.com",
-            messagingSenderId: "628920247502",
-            appId: "1:628920247502:web:93439270d44745fc435c9f"
-        }
-    </script>
-    <script>firebase.initializeApp(firebaseConfig)</script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+
+<script src="assets/js/firebaseInit.js"></script>
 </body>
 
 </html>

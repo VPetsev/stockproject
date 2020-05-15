@@ -104,7 +104,6 @@ function companyInfo(stock) {
         .then(responseMain => responseMain.json())
         .then(allInfo => {
             let companyInfo = document.getElementById("company-information")
-            console.log(allInfo)
             companyInfo.innerHTML = `
                     <h2><b>${allInfo.companyName}</b><h3>(${allInfo.symbol})</h3></h2>
                     <span>
