@@ -49,7 +49,9 @@ function cardPopulatorAfterHours(allData, symbol) {
             `
             <div class="card">
                 <img class="card-img-top" src="images/candlestick-graph-slanting-right.jpg" alt="Card image cap">
-                <button type="button" class="btn btn-block btn-dark mw-100" onclick='addToWatchlist("${symbol}")'>Add to watchlist</button>
+                <button type="button" class="btn btn-block btn-dark mw-100" onclick='addToWatchlist("${symbol}")'>Add to watchlist 
+                    <img src="/images/plus-square.svg" alt="" width="32" height="32" title="Bootstrap">
+                </button>
                 <div class="bg-secondary card-body">
                     <h4 class="card-title">
                     ${companyInfo.companyName} <small class="card-text">(${companyInfo.symbol})</small> </h4>
@@ -106,6 +108,9 @@ function addToWatchlist(symbol) {
     firebase.database().ref("users/" + currentUser.uid).on("value", function (snapshot) {
         array = Object.values(snapshot.val())
     })
+    if (location.href != "/watchlist.html") {
+        location.href = "/watchlist.html"
+    }
 }
 
 function seeMoreInfo(symbol) {

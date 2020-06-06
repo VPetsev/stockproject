@@ -1,7 +1,13 @@
-var mySymbol = sessionStorage.getItem('dataStored')
+let storedSymbol, searchedSymbol, mySymbol
+storedSymbol = sessionStorage.getItem('dataStored')
+searchedSymbol = sessionStorage.getItem("searchItem")
 
-if (mySymbol == null) {
-    mySymbol = 'AAPL'
+if (searchedSymbol != null) {
+    mySymbol = searchedSymbol
+} else if (searchedSymbol == null && storedSymbol != null) {
+    mySymbol = storedSymbol
+} else {
+    mySymbol == "AAPL"
 }
 
 function parseData(stock, callback) {
@@ -102,16 +108,24 @@ function chartFunction(data, symbol) {
 function companyInfo(stock) {
     fetch(
         `https://sandbox.iexapis.com/stable/stock/${stock}/company?token=Tpk_4aa9dbaa5e0d48d497c96a35ce0d7493`
-    ).then(responseMain => responseMain.json()).then(allInfo => {
+    ).then(responseMain => responseMain.json())
+        .then(allInfo => {
         let companyInfo = document.getElementById("company-information")
         companyInfo.innerHTML =
             `
-                    <h2><b>${allInfo.companyName}</b><h3>(${allInfo.symbol})</h3></h2>
+                    <h2><b>${allInfo.companyName}</b>     
+                    <h3>(${allInfo.symbol})</h3>
+                    </h2>
                     <span>
-                        <p>Company Summary: ${allInfo.description}</p>
-                        <span>Website: ${allInfo.website}</span>
-                        <p>Address: ${allInfo.address} ${allInfo.city}, ${allInfo.state}, ${allInfo.country}</p>
-                    </span>`
+                    <p>Company Summary: ${allInfo.description}</p>
+                    <span>Website: ${allInfo.website}</span>
+                    <p>Address: ${allInfo.address} ${allInfo.city}, ${allInfo.state}, ${allInfo.country}</p>
+                    </span>
+                    <button type="button" class="btn btn-dark" onclick='addToWatchlist("${mySymbol}")'>
+                        Add to WatchList
+                        <img src="/images/plus-square.svg" alt="" width="32" height="32" title="Bootstrap">
+                        </button>
+            `
     })
 }
 companyInfo(mySymbol)
