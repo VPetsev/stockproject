@@ -12,7 +12,7 @@ body {
     background-size: cover;
 }
 
-.is-invisible { 
+.is-invisible {
     display: none!important;
 }
 
@@ -131,7 +131,7 @@ body {
 #container > hr {
     border: none;
     border: 1px solid #fff;
-    width: 80%;
+    width: 100%;
 }
 
 .card {
@@ -139,10 +139,17 @@ body {
     display: inline-block;
     position: relative;
     width: 385px;
-    height: 400px;
 
     /* opacity: 0.85 */
     /* background-image: url('images/Cr4tRh8.jpg') */
+}
+
+.aboutCard {
+    margin: 10px;
+    display: inline-block;
+    position: relative;
+    width: 385px;
+    height: 385px;
 }
 
 .front,
@@ -189,6 +196,16 @@ body {
 }
 
 .card:hover .back {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.aboutCard:hover .front {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.aboutCard:hover .back {
     -webkit-transform: rotateY(0deg);
     transform: rotateY(0deg);
 }
@@ -280,7 +297,8 @@ body {
     content: "";
     background-color: rgba(255, 255, 255, .1);
     border-radius: 5px;
-    background-image: url('images/phone-with-stocks.jpg');
+
+    /* background-image: url('images/phone-with-stocks.jpg'); */
     background-size: cover;
 }
 
@@ -505,5 +523,8 @@ span {
 
 p.text-warning {
     font-size: 22px;
+}
+
+.aboutCard {
 }
 

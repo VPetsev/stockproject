@@ -2,7 +2,9 @@ const txtSearch = document.getElementById("txtSearch")
 const btnSearch = document.getElementById("btnSearch")
 
 
-txtSearch.addEventListener("onclick", () => {
-
-    loadWatchlistedStocks(txtSearch.value)
+btnSearch.addEventListener("click", () => {
+    sessionStorage.setItem("searchItem", txtSearch.value)
+    let mySymbol = sessionStorage.getItem("searchItem")
+    console.log(mySymbol)
+    location.href = "/stock-info.html"
 })

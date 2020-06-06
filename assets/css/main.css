@@ -23,6 +23,11 @@ li {
         align-items: left;
        
     }
+
+    .aboutCard {
+        display: flex;
+        align-items: left;
+    }
     .buttons {
         width: 29px;
         height: 29px;
