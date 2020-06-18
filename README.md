@@ -28,7 +28,7 @@ A real-time stock market information application. Users can get real-time stock 
 
 ## Contributors
 
-Victor Petsev - (https://github.com/Vpetsev96)
-Nathan Orris – (https://github.com/NathanNOSudo)
-Andrew Ellis – (https://github.com/h-drew-ellis) 
-Jared Garcia – (https://github.com/JGarcia1998) 
+* Victor Petsev - (https://github.com/Vpetsev96)
+* Nathan Orris – (https://github.com/NathanNOSudo)
+* Andrew Ellis – (https://github.com/h-drew-ellis) 
+* Jared Garcia – (https://github.com/JGarcia1998) 
